@@ -1,4 +1,4 @@
-class ActionBlock extends Block {
+class StructureBlock extends Block {
   constructor(name, position) {
     super(name, position);
   }

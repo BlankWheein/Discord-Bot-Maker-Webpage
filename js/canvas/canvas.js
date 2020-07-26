@@ -1,56 +1,81 @@
 class Canvas{
-  constructor(dom_id){
-    this.dom_id = dom_id;
-    this.dom = $("#" + this.dom_id);
-  }
+  constructor(canvas_id){
+    this.canvas_id = canvas_id;
 
-  create_block(position, dimension, html, color){
-    let style = "left: " + position[0] + "px;" +
-                "top: " + position[1] + "px;" +
-                "width: " + dimension[0] + "px;" +
-                "height: " + dimension[1] + "px;" +
-                "background-color: " + color;
-
-    let block = $("<div/>", {
-      html: html,
-      class: "action-block",
-      style: style
+    this.instance = jsPlumb.getInstance({
+      Endpoint: ["Dot", { radius: 2 }],
+      Connector: "StateMachine",
+      HoverPaintStyle: { stroke: "#1e8151", strokeWidth: 2 },
+      ConnectionOverlays: [
+        ["Arrow", {
+          location: 1,
+          id: "arrow",
+          length: 14,
+          foldback: 0.8
+        }]
+      ],
+      Container: "canvas"
     });
 
-    this.dom.append(block);
-    return block;
+    this.instance.registerConnectionTypes({
+      "basic": {
+        anchor: "Continuous",
+        connector: "StateMachine"
+      },
+      "decision": {
+        anchor: "Continuous",
+        connector: "StateMachine",
+        overlays: [
+          ["Label", { label: "true", location: 0.5, id: "conn_label" }]
+        ]
+      }
+    });
   }
 
-  create_line(from_pos, to_pos, thickness, color){
-    let x1 = from_pos[0];
-    let x2 = to_pos[0];
-    let y1 = from_pos[1];
-    let y2 = to_pos[1];
+  create_block(text, id, pos){
+    let dom = document.createElement("div");
 
-    let dx = Math.abs(x1 - x2);
-    let dy = Math.abs(y1 - y2);
-    let length = Math.sqrt(dx * dx + dy * dy) * 1.1;
-    
-    let cx = ((x1 + x2) / 2) - (length / 2);
-    let cy = ((y1 + y2) / 2) - (thickness / 2);
-    let angle = Math.atan2((y1 - y2), (x1 - x2)) * (180 / Math.PI);
+    dom.className = "w";
+    dom.id = id;
+    dom.innerHTML = text + "<div class=\"ep\"></div>";
+    dom.style.left = pos[0] + "px";
+    dom.style.top = pos[1] + "px";
 
-    let html_line = $("<div/>", {
-      class: "connection-line",
-      style: "height:" + thickness + "px; \
-              background-color:" + color + "; \
-              left:" + cx + "px; \
-              top:" + cy + "px; \
-              width:" + length + "px; \
-              -moz-transform:rotate(" + angle + "deg); \
-              -webkit-transform:rotate(" + angle + "deg); \
-              -o-transform:rotate(" + angle + "deg); \
-              -ms-transform:rotate(" + angle + "deg); \
-              transform:rotate(" + angle + "deg); \
-              z-index: -1;" 
+    this.instance.getContainer().appendChild(dom);
+    this.init_node(dom);
+
+    return dom;
+  }
+
+  init_node(node_dom){
+    let conn_types = {
+      "EventBlock": "basic",
+      "ActionBlock": "basic",
+      "DecisionBlock": "decision"
+    }
+
+    let conn_type = conn_types[$(node_dom).attr("id").split("_")[0]];
+
+    this.instance.draggable(node_dom);
+
+    this.instance.makeSource(node_dom, {
+      filter: ".ep",
+      anchor: "Continuous",
+      connectorStyle: { stroke: "#5c96bc", strokeWidth: 2, outlineStroke: "transparent", outlineWidth: 4 },
+      connectionType: conn_type,
+      extract: {
+        "action": "the-action"
+      },
+      maxConnections: 4,
+      onMaxConnections: function (info, e) {
+        alert("Maximum connections (" + info.maxConnections + ") reached");
+      }
     });
 
-    this.dom.append(html_line);
-    return html_line;
+    this.instance.makeTarget(node_dom, {
+      dropOptions: { hoverClass: "dragHover" },
+      anchor: "Continuous",
+      allowLoopback: false
+    });
   }
 }
