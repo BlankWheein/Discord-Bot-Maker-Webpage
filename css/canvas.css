@@ -1,0 +1,30 @@
+body{
+  font-family: sans-serif;
+}
+
+.action-block{
+  position: absolute;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.action-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.action-title-text{
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.connection-line{
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  line-height: 1px;
+}
