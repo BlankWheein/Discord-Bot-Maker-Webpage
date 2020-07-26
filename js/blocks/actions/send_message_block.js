@@ -15,7 +15,6 @@ class SendMessageBlock extends ActionBlock {
       sendMessage: {
         message: this.message,
         channel: this.channel,
-        target: this.target,
         var: this.save_var,
         delete_after: this.delete_after
       }

@@ -6,11 +6,11 @@ jsPlumb.ready(function () {
   });
 
   $("#add-send-message").click(() => {
-    drawer.draw_block(new SendMessageBlock(position = [0, 0], "The eval was false", "channel", "", "", "null"));
+    drawer.draw_block(new SendMessageBlock(position = [0, 0], "The eval was false", "channel", "", "", null));
   });
 
   $("#add-send-message2").click(() => {
-    drawer.draw_block(new SendMessageBlock(position = [0, 0], "The eval was true", "channel", "", "", "null"));
+    drawer.draw_block(new SendMessageBlock(position = [0, 0], "The eval was true", "channel", "", "", null));
   });
 
   $("#add-if-statement").click(() => {
