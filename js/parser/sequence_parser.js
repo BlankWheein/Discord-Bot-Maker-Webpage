@@ -4,10 +4,8 @@ class SequenceParser{
   }
 
   generate_event_order(){
-    let head = this.object_drawer.blocks_objs[OnReadyBlock.name + "_0"];
-
-    function create_json(current_block, current_json){
-      if(current_block instanceof DecisionBlock){
+    function create_json(current_block, current_json) {
+      if (current_block instanceof DecisionBlock) {
         let true_json = [];
         let false_json = [];
 
@@ -29,7 +27,7 @@ class SequenceParser{
         });
 
         return Object.assign({}, current_json, current_block.compile_json(branches_json));
-      }else{
+      } else {
         let branches_json = [];
 
         current_block.connections.forEach(e => {
@@ -42,7 +40,9 @@ class SequenceParser{
       }
     }
 
-    let json = create_json(head, "");
+    let head = this.object_drawer.blocks_objs[EventBlock.name + "_0"];
+    let json = create_json(head, {});
     $("#json-output").html(JSON.stringify(json));
+    return json;
   }
 }

@@ -43,6 +43,9 @@ class ObjectDrawer extends Canvas{
 
   draw_block(block){
     let block_type = block.constructor.name;
+    if(block instanceof EventBlock){
+      block_type = EventBlock.name;
+    }
 
     if (block_type in this.block_type_counter){
       var id = block_type + "_" + this.block_type_counter[block_type];
