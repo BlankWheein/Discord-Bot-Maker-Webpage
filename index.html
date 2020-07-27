@@ -6,22 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel="stylesheet" href="dist/css/jsplumb/jsplumbtoolkit-defaults.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="css/panels.css">
     <link rel="stylesheet" href="css/state-machine.css">
   </head>
   <body>
     <div class="jtk-main">
-      <div class="edit-panel" id="edit-panel"></div>
-      <div class="jtk-canvas canvas-wide statemachine jtk-surface jtk-surface-nopan" id="canvas"></div>
+      <div class="panels">
+        <div class="canvas-panel jtk-canvas canvas-wide statemachine jtk-surface jtk-surface-nopan" id="canvas"></div>
+        <div class="edit-panel-holder">
+          <span class="block-editor-title">Block Editor</span>
+          <hr/>
+          <div class="edit-panel" id="edit-panel"></div>
+        </div>
+      </div>
 
-      <input type="button" id="add-send-message" value="Add 'Send Message'">
-      <input type="button" id="add-if-statement" value="Add 'If Statement'">
-      <input type="button" id="add-on-ready" value="Add 'On Ready'">
-      <input type="button" id="add-set-var" value="Add 'Set Var'">
-      <input type="button" id="add-set-channel" value="Add 'Set Channel'">
+      <br/>
+      <input type="button" class="btn btn-outline-dark" id="add-send-message" value="Add 'Send Message'">
+      <input type="button" class="btn btn-outline-dark" id="add-if-statement" value="Add 'If Statement'">
+      <input type="button" class="btn btn-outline-dark" id="add-on-ready" value="Add 'On Ready'">
+      <input type="button" class="btn btn-outline-dark" id="add-set-var" value="Add 'Set Var'">
+      <input type="button" class="btn btn-outline-dark" id="add-set-channel" value="Add 'Set Channel'">
 
       <br/><br/>
-      <input type="button" id="generate-code" value="Parse into Json">
+      <input type="button" class="btn btn-success" id="generate-code" value="Parse into Json">
 
       <br/>
       <div id="json-output"></div>

@@ -6,6 +6,12 @@ class Block{
     this.connections = [];
   }
 
+  // General block functions
+  assign_dom(dom) {
+    this.dom = dom;
+    this.update_text();
+  }
+
   get_connections(conn_type) {
     let out_connections = [];
 
@@ -18,20 +24,7 @@ class Block{
     return out_connections;
   }
 
-  get_form_info() {
-    return [];
-  }
-
-  assign_dom(dom){
-    this.dom = dom;
-    this.update_text();
-  }
-
-  compile_json(){
-    return {};
-  }
-
-  update_dom_text(new_text){
+  update_dom_text(new_text) {
     this.text = new_text;
 
     $(this.dom).find('span').remove();
@@ -52,4 +45,26 @@ class Block{
 
     this.update_text();
   }
+
+  // Overritable functions
+  get_form_info() {
+    return [];
+  }
+
+  compile_json() {
+    return {};
+  }
+
+  update_text() {
+    this.update_dom_text("Block");
+  }
+
+  
+
+  
+
+  
+  
+
+  
 }

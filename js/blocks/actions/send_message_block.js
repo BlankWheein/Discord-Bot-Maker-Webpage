@@ -1,6 +1,6 @@
 class SendMessageBlock extends ActionBlock {
   constructor(position = [0, 0],
-              message = "TuckFaaha",
+              message = "",
               channel = 736592970601594921,
               save_var = "var1",
               delete_after = 20) {

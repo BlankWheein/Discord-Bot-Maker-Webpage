@@ -77,10 +77,15 @@ class ObjectDrawer extends Canvas{
   update_side_panel(){
     $("#edit-panel").empty();
     this.selected_block.get_form_info().forEach((e, i) => {
+      let group = $("<div/>", {
+        class: "form-group"
+      });
+
       let input = $("<input/>", {
         type: e.type,
         value: e.value,
-        name: e.variable
+        name: e.variable,
+        class: "form-control"
       });
 
       let label = $("<label/>", {
@@ -88,19 +93,16 @@ class ObjectDrawer extends Canvas{
         for: e.variable
       });
 
-      let br = $("<br/>");
+      group.append(label);
+      group.append(input);
 
-      $("#edit-panel").append(label);
-      $("#edit-panel").append(br);
-      $("#edit-panel").append(br);
-      $("#edit-panel").append(input);
-      $("#edit-panel").append(br);
-      $("#edit-panel").append(br);
+      $("#edit-panel").append(group);
     });
 
     let save = $("<input/>", {
       type: "button",
-      value: "Save"
+      value: "Save",
+      class: "btn btn-primary btn-block"
     }).click(() => {
       let new_params = {};
 
