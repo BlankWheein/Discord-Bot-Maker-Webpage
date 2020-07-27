@@ -32,12 +32,12 @@ class Canvas{
     });
   }
 
-  create_block(text, id, pos){
+  create_block(id, pos){
     let dom = document.createElement("div");
 
     dom.className = "w";
     dom.id = id;
-    dom.innerHTML = text + "<div class=\"ep\"></div>";
+    dom.innerHTML = "<div class=\"ep\"></div>";
     dom.style.left = pos[0] + "px";
     dom.style.top = pos[1] + "px";
 

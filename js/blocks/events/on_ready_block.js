@@ -1,7 +1,12 @@
 class OnReadyBlock extends EventBlock {
   constructor(position) {
-    let name = "On Ready";
-    super(name, position);
+    super(position);
+
+    this.update_text();
+  }
+
+  update_text() {
+    this.update_dom_text("On Ready");
   }
 
   compile_json(actions) {
@@ -10,5 +15,9 @@ class OnReadyBlock extends EventBlock {
         actions: actions
       }
     };
+  }
+
+  get_form_info() {
+    return [];
   }
 }

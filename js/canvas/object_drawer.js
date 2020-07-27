@@ -3,6 +3,7 @@ class ObjectDrawer extends Canvas{
     super(canvas_id);
     this.block_type_counter = {};
     this.blocks_objs = {};
+    this.selected_block = undefined;
 
     let ctx = this;
 
@@ -27,7 +28,6 @@ class ObjectDrawer extends Canvas{
         });
       }
     });
-
     
     this.instance.bind("click", function (c) {
       // If a connection was clicked while Shift was held
@@ -57,17 +57,62 @@ class ObjectDrawer extends Canvas{
 
     this.blocks_objs[id] = block;
 
-    let dom = this.create_block(block.text, id, block.position);
+    let dom = this.create_block(id, block.position);
+    block.assign_dom(dom);
 
     let ctx = this;
     $(dom).click(() => {
       // If the node was clicked while the Shift key was held
       if (pressed_keys[SHIFT_KEY_CODE]) {
         ctx.instance.remove(dom);
+      }else{
+        this.selected_block = block;
+        this.update_side_panel();
       }
     });
 
-    block.assign_dom(dom);
     return dom;
+  }
+
+  update_side_panel(){
+    $("#edit-panel").empty();
+    this.selected_block.get_form_info().forEach((e, i) => {
+      let input = $("<input/>", {
+        type: e.type,
+        value: e.value,
+        name: e.variable
+      });
+
+      let label = $("<label/>", {
+        html: e.name,
+        for: e.variable
+      });
+
+      let br = $("<br/>");
+
+      $("#edit-panel").append(label);
+      $("#edit-panel").append(br);
+      $("#edit-panel").append(br);
+      $("#edit-panel").append(input);
+      $("#edit-panel").append(br);
+      $("#edit-panel").append(br);
+    });
+
+    let save = $("<input/>", {
+      type: "button",
+      value: "Save"
+    }).click(() => {
+      let new_params = {};
+
+      $("#edit-panel :input[type!=button]").each(function () {
+        let val = $(this).val();
+        let name = $(this).attr("name");
+        new_params[name] = val;
+      });
+
+      this.selected_block.update_parameters(new_params);
+    });
+
+    $("#edit-panel").append(save);
   }
 }
