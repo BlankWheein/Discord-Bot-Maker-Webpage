@@ -1,10 +1,5 @@
 class SendMessageBlock extends ActionBlock {
-  constructor(position = [0, 0],
-              message = "",
-              channel = 736592970601594921,
-              save_var = "var1",
-              delete_after = 20) {
-
+  constructor(position=[0, 0], message="", channel="channel", save_var="var1", delete_after=20) {
     super(position);
 
     this.message = message;
@@ -41,7 +36,7 @@ class SendMessageBlock extends ActionBlock {
       {
         name: "Channel",
         value: this.channel,
-        type: "number",
+        type: "text",
         variable: "channel"
       },
       {
