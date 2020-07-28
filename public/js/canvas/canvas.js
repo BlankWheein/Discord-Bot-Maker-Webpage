@@ -41,7 +41,7 @@ class Canvas{
     });
   }
 
-  create_block(id, pos){
+  create_block(id, pos, connection_type){
     let dom = document.createElement("div");
 
     dom.className = "w";
@@ -51,23 +51,12 @@ class Canvas{
     dom.style.top = pos[1] + "px";
 
     this.instance.getContainer().appendChild(dom);
-    this.init_node(dom);
+    this.init_node(dom, connection_type);
 
     return dom;
   }
 
-  init_node(node_dom){
-    let conn_type = "basic";
-
-    let block_name = $(node_dom).attr("id").split("_")[0];
-    let other_conn_types = {
-      "DecisionBlock": "decision"
-    }
-
-    if (block_name in other_conn_types){
-      conn_type = other_conn_types[block_name];
-    }
-
+  init_node(node_dom, conn_type){
     this.instance.draggable(node_dom);
 
     this.instance.makeSource(node_dom, {

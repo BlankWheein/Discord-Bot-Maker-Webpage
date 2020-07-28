@@ -4,6 +4,7 @@ class SequenceParser{
   }
 
   generate_event_order(){
+    console.log(this.object_drawer);
     function create_json(current_block, current_json) {
       if (current_block instanceof DecisionBlock) {
         let true_json = [];

@@ -19,7 +19,7 @@ class ObjectDrawer extends Canvas{
       });
 
       // If the connection is of "decision" type
-      if (info.connection.connector.typeId == "decision"){
+      if (info.connection.hasType("decision")){
         info.connection.bind("click", function (conn, originalEvent) {
           let labels = ["true", "false", "either"];
           let new_label = labels[(labels.indexOf(conn.label) + 1) % labels.length];
@@ -32,6 +32,26 @@ class ObjectDrawer extends Canvas{
             }
           }
         });
+      }
+    });
+
+    this.instance.bind("connectionDetached", function (c) {
+      ctx.blocks_objs[c.sourceId].connections = ctx.blocks_objs[c.sourceId].connections.filter(
+        e => $(e.target_block.dom).attr("id") != c.targetId
+      );
+    });
+
+    this.instance.bind("connectionDrag", function (conn) {
+      let conn_type = "";
+      if (conn.connector.canvas.nextSibling) {
+        conn_type = conn.connector.canvas.nextSibling.innerText;
+      }
+
+      if (conn.hasType("decision")) {
+        let labels = ["true", "false", "either"];
+        if (conn_type == "") {
+          conn.addOverlay(["Label", { label: labels[0], location: 0.5, id: "conn_label" }]);
+        }
       }
     });
     
@@ -70,7 +90,7 @@ class ObjectDrawer extends Canvas{
 
     let connection_type = "basic";
     if (block instanceof DecisionBlock) {
-      block_type = "decision";
+      connection_type = "decision";
     }
 
     if(set_id){
@@ -101,6 +121,7 @@ class ObjectDrawer extends Canvas{
     $(dom).click(() => {
       // If the node was clicked while the Shift key was held
       if (pressed_keys[SHIFT_KEY_CODE]) {
+        // delete ctx.blocks_objs[$(dom).attr("id")];
         ctx.instance.remove(dom);
       }else{
         this.selected_block = block;
