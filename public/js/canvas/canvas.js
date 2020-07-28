@@ -20,14 +20,26 @@ class Canvas{
     this.instance.registerConnectionTypes({
       "basic": {
         anchor: "Continuous",
-        connector: "StateMachine"
+        connector: "StateMachine",
+        paintStyle: {
+          stroke: "#5c96bc",
+          strokeWidth: 2,
+          outlineStroke: "transparent",
+          outlineWidth: 4
+        }
       },
       "decision": {
         anchor: "Continuous",
         connector: "StateMachine",
         overlays: [
           ["Label", { label: "true", location: 0.5, id: "conn_label" }]
-        ]
+        ],
+        paintStyle: {
+          stroke: "#5c96bc",
+          strokeWidth: 2,
+          outlineStroke: "transparent",
+          outlineWidth: 4
+        }
       }
     });
   }
@@ -48,20 +60,21 @@ class Canvas{
   }
 
   init_node(node_dom){
-    let conn_types = {
-      "EventBlock": "basic",
-      "ActionBlock": "basic",
+    let conn_type = "basic";
+
+    let block_name = $(node_dom).attr("id").split("_")[0];
+    let other_conn_types = {
       "DecisionBlock": "decision"
     }
 
-    let conn_type = conn_types[$(node_dom).attr("id").split("_")[0]];
+    if (block_name in other_conn_types){
+      conn_type = other_conn_types[block_name];
+    }
 
     this.instance.draggable(node_dom);
 
     this.instance.makeSource(node_dom, {
       filter: ".ep",
-      anchor: "Continuous",
-      connectorStyle: { stroke: "#5c96bc", strokeWidth: 2, outlineStroke: "transparent", outlineWidth: 4 },
       connectionType: conn_type,
       extract: {
         "action": "the-action"
@@ -74,7 +87,7 @@ class Canvas{
 
     this.instance.makeTarget(node_dom, {
       dropOptions: { hoverClass: "dragHover" },
-      anchor: "Continuous",
+      connectionType: conn_type,
       allowLoopback: false
     });
   }

@@ -1,6 +1,6 @@
 class OnReadyBlock extends EventBlock {
-  constructor(position) {
-    super(position);
+  constructor(x = 0, y = 0) {
+    super([x, y]);
 
     this.update_text();
   }

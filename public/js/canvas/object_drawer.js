@@ -16,7 +16,8 @@ class ObjectDrawer extends Canvas{
       // If the connection is of "decision" type
       if (info.connection.connector.typeId == "decision"){
         info.connection.bind("click", function (conn, originalEvent) {
-          let new_label = conn.label == "true" ? "false" : "true";
+          let labels = ["true", "false", "either"];
+          let new_label = labels[(labels.indexOf(conn.label) + 1) % labels.length];
           info.connection.removeOverlay("conn_label");
           info.connection.addOverlay(["Label", { label: new_label, location: 0.5, id: "conn_label" }]);
 
@@ -41,24 +42,53 @@ class ObjectDrawer extends Canvas{
     });
   }
 
-  draw_block(block){
+  connect_blocks(a, b, type="basic", label){
+    let conn = this.instance.connect({
+      source: a,
+      target: b,
+      type: type
+    });
+
+    if(label && label.length > 0){
+      conn.removeOverlay("conn_label");
+      conn.addOverlay(["Label", { label: label, location: 0.5, id: "conn_label" }]);
+    }
+  }
+
+  draw_block(block, set_id){
     let block_type = block.constructor.name;
     if(block instanceof EventBlock){
       block_type = EventBlock.name;
     }
 
-    if (block_type in this.block_type_counter){
-      var id = block_type + "_" + this.block_type_counter[block_type];
-      this.block_type_counter[block_type]++;
+    let connection_type = "basic";
+    if (block instanceof DecisionBlock) {
+      block_type = "decision";
+    }
+
+    if(set_id){
+      var id = set_id;
+      let block_type = set_id.split("_")[0];
+      let block_indx = parseInt(set_id.split("_")[1]);
+      this.block_type_counter[block_type] = block_indx + 1;
     }else{
-      var id = block_type + "_0";
-      this.block_type_counter[block_type] = 1;
+      if (block_type in this.block_type_counter){
+        var id = block_type + "_" + this.block_type_counter[block_type];
+        this.block_type_counter[block_type]++;
+      }else{
+        var id = block_type + "_0";
+        this.block_type_counter[block_type] = 1;
+      }
     }
 
     this.blocks_objs[id] = block;
 
-    let dom = this.create_block(id, block.position);
+    let dom = this.create_block(id, block.position, connection_type);
     block.assign_dom(dom);
+
+    this.instance.addEndpoint(id, {
+      connectionType: connection_type
+    }); 
 
     let ctx = this;
     $(dom).click(() => {
@@ -81,12 +111,26 @@ class ObjectDrawer extends Canvas{
         class: "form-group"
       });
 
-      let input = $("<input/>", {
-        type: e.type,
-        value: e.value,
-        name: e.variable,
-        class: "form-control"
-      });
+      if (Array.isArray(e.type)){
+        var input = $("<select/>", {
+          name: e.variable,
+          class: "form-control"
+        });
+
+        e.type.forEach((ith_type, i) => {
+          input.append($("<option/>", {
+            html: ith_type,
+            selected: ith_type == e.value
+          }));
+        });
+      }else{
+        var input = $("<input/>", {
+          type: e.type,
+          value: e.value,
+          name: e.variable,
+          class: "form-control"
+        });
+      }
 
       let label = $("<label/>", {
         html: e.name,

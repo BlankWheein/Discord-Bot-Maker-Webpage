@@ -1,5 +1,12 @@
 jsPlumb.ready(function () {
   const drawer = new ObjectDrawer("canvas");
+  const cmd_loader = new CommandLoader(drawer);
+  cmd_loader.draw_command();
+
+  
+  $("#add-command").click(() => {
+    alert("Add Command");
+  });
 
   $("#add-on-ready").click(() => {
     drawer.draw_block(new OnReadyBlock());

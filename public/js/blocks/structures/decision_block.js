@@ -1,6 +1,6 @@
 class DecisionBlock extends StructureBlock {
-  constructor(position, var1="var1", var2="var2", operator="==") {
-    super(position);
+  constructor(x = 0, y = 0, var1="var1", var2="var2", operator="==") {
+    super([x, y]);
 
     this.var1 = var1;
     this.var2 = var2;
@@ -36,7 +36,14 @@ class DecisionBlock extends StructureBlock {
       {
         name: "Operator",
         value: this.operator,
-        type: "text",
+        type: [
+          "==",
+          "<",
+          "!=",
+          ">",
+          ">=",
+          "<="
+        ],
         variable: "operator"
       },
       {

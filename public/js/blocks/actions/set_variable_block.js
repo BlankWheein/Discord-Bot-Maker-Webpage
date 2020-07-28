@@ -1,6 +1,6 @@
 class SetVariableBlock extends ActionBlock {
-  constructor(position, content = "TuckFaaha", type = "str", var_name = "var1") {
-    super(position);
+  constructor(x = 0, y = 0, content = "TuckFaaha", type = "str", var_name = "var1") {
+    super([x, y]);
 
     this.content = content;
     this.type = type;
@@ -34,7 +34,10 @@ class SetVariableBlock extends ActionBlock {
       {
         name: "Variable Type",
         value: this.type,
-        type: "text",
+        type: [
+          "int",
+          "str"
+        ],
         variable: "type"
       },
       {

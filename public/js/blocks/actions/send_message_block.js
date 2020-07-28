@@ -1,6 +1,6 @@
 class SendMessageBlock extends ActionBlock {
-  constructor(position=[0, 0], message="", channel="channel", save_var="var1", delete_after=20) {
-    super(position);
+  constructor(x = 0, y = 0, message="", channel="channel", save_var="var1", delete_after=20) {
+    super([x, y]);
 
     this.message = message;
     this.channel = channel;

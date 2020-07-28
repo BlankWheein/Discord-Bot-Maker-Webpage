@@ -1,0 +1,118 @@
+{
+  "commands": [
+    {
+      "command": "OnReadyBlock",
+      "id": "EventBlock_0",
+      "position": [75, 43],
+      "variables": {}
+    },
+    {
+      "command": "SetChannelBlock",
+      "id": "SetChannelBlock_0",
+      "position": [67, 144],
+      "variables": {
+        "id": 736592970601594900
+      }
+    },
+    {
+      "command": "SetVariableBlock",
+      "id": "SetVariableBlock_0",
+      "position": [51, 242],
+      "variables": {
+        "content": "var_content",
+        "type": "str",
+        "var_name": "var1"
+      }
+    },
+    {
+      "command": "SetVariableBlock",
+      "id": "SetVariableBlock_1",
+      "position": [51, 334],
+      "variables": {
+        "content": "var_content",
+        "type": "str",
+        "var_name": "var2"
+      }
+    },
+    {
+      "command": "DecisionBlock",
+      "id": "DecisionBlock_0",
+      "position": [309, 294],
+      "variables": {
+        "var1": "var1",
+        "var2": "var2",
+        "operator": "=="
+      }
+    },
+    {
+      "command": "SendMessageBlock",
+      "id": "SendMessageBlock_1",
+      "position": [311, 138],
+      "variables": {
+        "message": "Variables are equal",
+        "channel": "channel",
+        "save_var": "",
+        "delete_after": 20
+      }
+    },
+    {
+      "command": "SendMessageBlock",
+      "id": "SendMessageBlock_2",
+      "position": [514, 263],
+      "variables": {
+        "message": "Variables are different",
+        "channel": "channel",
+        "save_var": "",
+        "delete_after": 20
+      }
+    },
+    {
+      "command": "SendMessageBlock",
+      "id": "SendMessageBlock_3",
+      "position": [284, 446],
+      "variables": {
+        "message": "If hsa ended",
+        "channel": "channel",
+        "save_var": "",
+        "delete_after": 20
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "EventBlock_0",
+      "to": "SetChannelBlock_0",
+      "label": ""
+    },
+    {
+      "from": "SetChannelBlock_0",
+      "to": "SetVariableBlock_0",
+      "label": ""
+    },
+    {
+      "from": "SetVariableBlock_0",
+      "to": "SetVariableBlock_1",
+      "label": ""
+    },
+    {
+      "from": "SetVariableBlock_1",
+      "to": "DecisionBlock_0",
+      "label": ""
+    },
+    {
+      "from": "DecisionBlock_0",
+      "to": "SendMessageBlock_1",
+      "label": "true"
+    },
+    {
+      "from": "DecisionBlock_0",
+      "to": "SendMessageBlock_2",
+      "label": "false"
+    },
+    {
+      "from": "DecisionBlock_0",
+      "to": "SendMessageBlock_3",
+      "label": "either"
+    }
+  ]
+}

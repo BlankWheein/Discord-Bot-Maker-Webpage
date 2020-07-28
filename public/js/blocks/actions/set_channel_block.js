@@ -1,6 +1,6 @@
 class SetChannelBlock extends ActionBlock {
-  constructor(position, id = 736592970601594921) {
-    super(position);
+  constructor(x = 0, y = 0, id = 736592970601594921) {
+    super([x, y]);
 
     this.id = id;
 
@@ -8,7 +8,7 @@ class SetChannelBlock extends ActionBlock {
   }
 
   update_text() {
-    this.update_dom_text("Set channel = " + this.id);
+    this.update_dom_text("Set channel ID");
   }
 
   compile_json() {
@@ -22,7 +22,7 @@ class SetChannelBlock extends ActionBlock {
   get_form_info() {
     return [
       {
-        name: "Channel id",
+        name: "Channel ID",
         value: this.id,
         type: "number",
         variable: "id"
