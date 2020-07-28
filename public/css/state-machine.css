@@ -23,16 +23,17 @@
 
 .jtk-main {
 	position: relative;
-	margin-top: 10px;
 }
 
 .jtk-canvas {
-	height: 550px;
+	height: 600px;
 	max-height: 700px;
 	border: 1px solid #CCC;
 	background-color: white;
 	display: flex;
 	position: relative;
+
+	overflow: hidden !important;
 }
 
 .canvas-wide {
