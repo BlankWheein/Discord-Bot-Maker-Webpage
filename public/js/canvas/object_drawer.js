@@ -8,9 +8,16 @@ class ObjectDrawer extends Canvas{
     let ctx = this;
 
     this.instance.bind("connection", function (info) {
+      let conn_type = "";
+      if (info.connection.connector.canvas.nextSibling) {
+        conn_type = info.connection.connector.canvas.nextSibling.innerText;
+      }
+
+      console.log(conn_type);
+
       ctx.blocks_objs[info.sourceId].connections.push({
         target_block: ctx.blocks_objs[info.targetId],
-        connection_type: info.connection.connector.canvas.nextElementSibling.innerText
+        connection_type: conn_type
       });
 
       // If the connection is of "decision" type
@@ -43,16 +50,18 @@ class ObjectDrawer extends Canvas{
   }
 
   connect_blocks(a, b, type="basic", label){
-    let conn = this.instance.connect({
+    let overlays = [];
+
+    if (label && label.length > 0) {
+      overlays.push(["Label", { label: label, location: 0.5, id: "conn_label" }]);
+    }
+
+    this.instance.connect({
       source: a,
       target: b,
-      type: type
+      type: type,
+      overlays: overlays
     });
-
-    if(label && label.length > 0){
-      conn.removeOverlay("conn_label");
-      conn.addOverlay(["Label", { label: label, location: 0.5, id: "conn_label" }]);
-    }
   }
 
   draw_block(block, set_id){

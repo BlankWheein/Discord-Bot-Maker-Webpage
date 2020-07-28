@@ -31,9 +31,6 @@ class Canvas{
       "decision": {
         anchor: "Continuous",
         connector: "StateMachine",
-        overlays: [
-          ["Label", { label: "true", location: 0.5, id: "conn_label" }]
-        ],
         paintStyle: {
           stroke: "#5c96bc",
           strokeWidth: 2,
