@@ -21,6 +21,8 @@ class SetChannelBlock extends ActionBlock {
     if (!isNaN(obj.setChannel.id)) {
       obj.setChannel.id = parseInt(obj.setChannel.id);
     }
+
+    return obj;
   }
 
   get_form_info() {
