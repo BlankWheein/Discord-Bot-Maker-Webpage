@@ -1,35 +1,9 @@
-.panel-holder{
-	padding-right: 5px;
-}
-
-.panels{
-	display: flex;
-	justify-content: center;
-	text-align: center;
-}
-
-.canvas-panel{
-	width: 100%;
-	background-color: #FFF;
-	color: #434343;
-	font-family: "Lato", sans-serif;
-	font-size: 14px;
-	font-weight: 400;
-	height: 100%;
-	padding: 0;
-}
-
 .edit-panel-holder{
-	width: 400px;
 	height: 540px;
 	background-color: #e0e0e0;
 	padding: 10px;
 	margin: 5px;
 	border-radius: 5px;
-}
-
-.edit-panel{
-	text-align: left;
 }
 
 .block-editor-title{

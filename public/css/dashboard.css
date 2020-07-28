@@ -28,6 +28,10 @@ body {
   }
 }
 
+.nav{
+  padding-left: 15px;
+}
+
 .sidebar-sticky {
   position: relative;
   top: 0;
@@ -47,6 +51,7 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+  padding-bottom: 0;
 }
 
 .sidebar .nav-link .feather {

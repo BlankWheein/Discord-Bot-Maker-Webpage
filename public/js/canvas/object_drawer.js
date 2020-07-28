@@ -13,8 +13,6 @@ class ObjectDrawer extends Canvas{
         conn_type = info.connection.connector.canvas.nextSibling.innerText;
       }
 
-      console.log(conn_type);
-
       ctx.blocks_objs[info.sourceId].connections.push({
         target_block: ctx.blocks_objs[info.targetId],
         connection_type: conn_type
