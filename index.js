@@ -13,7 +13,8 @@ app.get("/", function (req, res) {
     if (err) throw err;
     let commands = JSON.parse(data);
     res.render("dashboard", {
-      command_names: Object.keys(commands)
+      command_names: Object.keys(commands),
+      page_type: "home"
     });
   });
 });
@@ -26,7 +27,8 @@ app.get("/commands/:command", function (req, res) {
     let commands = JSON.parse(data);
     res.render("dashboard", {
       command_names: Object.keys(commands),
-      current_command: command_name
+      current_command: command_name,
+      page_type: "commands"
     });
   });
 });

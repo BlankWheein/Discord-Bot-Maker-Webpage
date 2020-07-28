@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <%if(typeof current_command != 'undefined' && current_command.length > 0){ %>
+    <%if(page_type == "commands"){ %>
       <%- include("subviews/blocks-import") %>
     <% } %>
 
@@ -28,12 +28,13 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <%- include("subviews/sidebar-menu", {
             command_names: command_names,
-            current_command: typeof current_command == 'undefined' ? "" : current_command
+            current_command: typeof current_command == 'undefined' ? "" : current_command,
+            page_type: page_type
           }) %>
         </nav>
 
         <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <%if(typeof current_command != 'undefined' && current_command.length > 0){ %>
+          <%if(page_type == "commands"){ %>
             <%- include("subviews/editor-canvas") %>
           <% } %>
         </div>
