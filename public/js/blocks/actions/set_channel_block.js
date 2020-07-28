@@ -12,11 +12,15 @@ class SetChannelBlock extends ActionBlock {
   }
 
   compile_json() {
-    return {
+    let obj = {
       setChannel: {
         id: this.id
       }
     };
+
+    if (!isNaN(obj.setChannel.id)) {
+      obj.setChannel.id = parseInt(obj.setChannel.id);
+    }
   }
 
   get_form_info() {

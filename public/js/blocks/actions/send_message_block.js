@@ -15,7 +15,7 @@ class SendMessageBlock extends ActionBlock {
   }
 
   compile_json() {
-    return {
+    let obj = {
       sendMessage: {
         message: this.message,
         channel: this.channel,
@@ -23,6 +23,16 @@ class SendMessageBlock extends ActionBlock {
         delete_after: this.delete_after
       }
     };
+
+    if (!isNaN(obj.sendMessage.channel)){
+      obj.sendMessage.channel = parseInt(obj.sendMessage.channel);
+    }
+
+    if (isNaN(obj.sendMessage.delete_after) || obj.sendMessage.delete_after <= 0) {
+      obj.sendMessage.delete_after = null;
+    }
+
+    return obj;
   }
 
   get_form_info() {
