@@ -21,7 +21,7 @@
           "message": "Test",
           "channel": "channel",
           "save_var": "",
-          "delete_after": 20
+          "delete_after": "20"
         }
       }
     ],
@@ -105,7 +105,7 @@
           "message": "Variables are equal",
           "channel": "channel",
           "save_var": "",
-          "delete_after": 20
+          "delete_after": "20"
         }
       },
       {
@@ -119,7 +119,7 @@
           "message": "Variables are different",
           "channel": "channel",
           "save_var": "",
-          "delete_after": 20
+          "delete_after": "20"
         }
       },
       {
@@ -133,7 +133,7 @@
           "message": "If hsa ended",
           "channel": "channel",
           "save_var": "",
-          "delete_after": 20
+          "delete_after": "20"
         }
       }
     ],

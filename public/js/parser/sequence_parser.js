@@ -51,10 +51,24 @@ class SequenceParser{
     }
 
     try{
-      let head = this.object_drawer.blocks_objs[EventBlock.name + "_0"];
-      let json = create_json(head, {});
-      $("#json-output").html(JSON.stringify(json));
-      return json;
+      let head = undefined;
+
+      Object.keys(this.object_drawer.blocks_objs).forEach(e => {
+        let obj = this.object_drawer.blocks_objs[e];
+        if (obj instanceof EventBlock){
+          head = obj;
+          return;
+        }
+      });
+
+      if (head){
+        let json = create_json(head, {});
+        $("#json-output").html(JSON.stringify(json));
+        return json;
+      }else{
+        $("#json-output").html("No event block");
+        return {};
+      }
     } catch (RangeError){
       $("#json-output").html("Infinite loop");
       return {};
