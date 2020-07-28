@@ -8,10 +8,7 @@ class ObjectDrawer extends Canvas{
     let ctx = this;
 
     this.instance.bind("connection", function (info) {
-      let conn_type = "";
-      if (info.connection.connector.canvas.nextSibling) {
-        conn_type = info.connection.connector.canvas.nextSibling.innerText;
-      }
+      let conn_type = ctx.get_label_from_conn(info.connection);
 
       ctx.blocks_objs[info.sourceId].connections.push({
         target_block: ctx.blocks_objs[info.targetId],
@@ -26,11 +23,11 @@ class ObjectDrawer extends Canvas{
           info.connection.removeOverlay("conn_label");
           info.connection.addOverlay(["Label", { label: new_label, location: 0.5, id: "conn_label" }]);
 
-          for (let i = 0; i < ctx.blocks_objs[info.sourceId].connections.length; i++){
-            if (ctx.blocks_objs[info.sourceId].connections[i].target_block.dom.id == info.connection.targetId){
-              ctx.blocks_objs[info.sourceId].connections[i].connection_type = new_label;
+          ctx.blocks_objs[info.sourceId].connections.forEach(e => {
+            if (e.target_block.dom.id == info.connection.targetId) {
+              e.connection_type = new_label;
             }
-          }
+          });
         });
       }
     });
@@ -42,16 +39,10 @@ class ObjectDrawer extends Canvas{
     });
 
     this.instance.bind("connectionDrag", function (conn) {
-      let conn_type = "";
-      if (conn.connector.canvas.nextSibling) {
-        conn_type = conn.connector.canvas.nextSibling.innerText;
-      }
+      let conn_type = ctx.get_label_from_conn(conn);
 
-      if (conn.hasType("decision")) {
-        let labels = ["true", "false", "either"];
-        if (conn_type == "") {
-          conn.addOverlay(["Label", { label: labels[0], location: 0.5, id: "conn_label" }]);
-        }
+      if (conn.hasType("decision") && conn_type == "") {
+        conn.addOverlay(["Label", { label: "true", location: 0.5, id: "conn_label" }]);
       }
     });
     
@@ -188,5 +179,14 @@ class ObjectDrawer extends Canvas{
     });
 
     $("#edit-panel").append(save);
+  }
+
+  get_label_from_conn(conn){
+    let label = "";
+    if (conn.connector.canvas.nextSibling) {
+      label = conn.connector.canvas.nextSibling.innerText;
+    }
+
+    return label;
   }
 }
