@@ -11,7 +11,7 @@
       "id": "SetChannelBlock_0",
       "position": [67, 144],
       "variables": {
-        "id": 736592970601594900
+        "id": "736592970601594921"
       }
     },
     {
@@ -52,7 +52,7 @@
         "message": "Variables are equal",
         "channel": "channel",
         "save_var": "",
-        "delete_after": 20
+        "delete_after": "20"
       }
     },
     {
@@ -63,7 +63,7 @@
         "message": "Variables are different",
         "channel": "channel",
         "save_var": "",
-        "delete_after": 20
+        "delete_after": "20"
       }
     },
     {
@@ -74,7 +74,7 @@
         "message": "If hsa ended",
         "channel": "channel",
         "save_var": "",
-        "delete_after": 20
+        "delete_after": "20"
       }
     }
   ],

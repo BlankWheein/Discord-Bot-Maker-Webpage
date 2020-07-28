@@ -24,21 +24,11 @@ class SendMessageBlock extends ActionBlock {
       }
     };
 
-    if (typeof obj.sendMessage.channel == "string" && isStrInt(obj.sendMessage.channel)){
-      obj.sendMessage.channel = parseInt(obj.sendMessage.channel);
-    }
-
-    if (typeof obj.sendMessage.delete_after == "string" && isStrInt(obj.sendMessage.delete_after)) {
-      obj.sendMessage.delete_after = parseInt(obj.sendMessage.delete_after);
-    }
-
     if (typeof obj.sendMessage.delete_after == "string" && !isStrInt(obj.sendMessage.delete_after)) {
       obj.sendMessage.delete_after = null;
     }
 
-    
-
-    if (!isNaN(obj.sendMessage.delete_after) && !Number.isInteger(obj.sendMessage.delete_after)) {
+    if (typeof obj.sendMessage.delete_after == "number" && !Number.isInteger(obj.sendMessage.delete_after)) {
       obj.sendMessage.delete_after = null;
     }
 

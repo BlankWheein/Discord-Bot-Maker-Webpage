@@ -1,5 +1,5 @@
 class SetChannelBlock extends ActionBlock {
-  constructor(x = 0, y = 0, id = 736592970601594921) {
+  constructor(x = 0, y = 0, id = "736592970601594921") {
     super([x, y]);
 
     this.id = id;
@@ -18,10 +18,6 @@ class SetChannelBlock extends ActionBlock {
       }
     };
 
-    if (!isNaN(obj.setChannel.id)) {
-      obj.setChannel.id = parseInt(obj.setChannel.id);
-    }
-
     return obj;
   }
 
@@ -30,7 +26,7 @@ class SetChannelBlock extends ActionBlock {
       {
         name: "Channel ID",
         value: this.id,
-        type: "number",
+        type: "text",
         variable: "id"
       }
     ];
