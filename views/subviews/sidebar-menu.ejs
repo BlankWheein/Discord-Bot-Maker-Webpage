@@ -1,9 +1,6 @@
 <div class="sidebar-sticky pt-3">
-  <%if(page_type == "home"){ %>
-  <a class="nav-link active" href="/">Dashboard</a>
-  <% } else { %>
-  <a class="nav-link" href="/">Dashboard</a>
-  <% } %>
+  <% var active_class = (page_type == "home") ? "active" : "" %>
+  <a class="nav-link <%= active_class %>" href="/">Home</a>
   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
     <span>Commands</span>
     <a class="d-flex align-items-center text-muted" id="add-command" href="#">
@@ -11,20 +8,13 @@
     </a>
   </h6>
   <ul class="nav flex-column mb-2">
-    <% for(let i = 0; i < command_names.length; i++){ %>
-    <%if(command_names[i] == current_command){ %>
-    <li class="nav-item">
-      <a class="nav-link active" href="/commands/<%= command_names[i] %>">
-        <%= command_names[i] %>
-      </a>
-    </li>
-    <% } else { %>
-    <li class="nav-item">
-      <a class="nav-link" href="/commands/<%= command_names[i] %>">
-        <%= command_names[i] %>
-      </a>
-    </li>
-    <% } %>
-    <% } %>
+    <% command_names.forEach(name => { %>
+      <li class="nav-item">
+        <% var active_class = (name == current_command) ? "active" : "" %>
+        <a class="nav-link <%= active_class %>" href="/commands/<%= name %>">
+          <%= name %>
+        </a>
+      </li>
+    <% }); %>
   </ul>
 </div>

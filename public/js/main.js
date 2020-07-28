@@ -1,9 +1,8 @@
 jsPlumb.ready(function () {
+  const drawer = new ObjectDrawer("canvas");
 
   let instructions_url = window.location.href + "/canvas_instructions";
   fetch(instructions_url).then(response => response.json()).then(json => {
-    console.log(json);
-    const drawer = new ObjectDrawer("canvas");
     const cmd_loader = new CommandLoader(drawer);
     cmd_loader.draw_command(json);
   });
