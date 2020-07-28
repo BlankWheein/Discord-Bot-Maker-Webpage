@@ -1,7 +1,10 @@
 class ObjectDrawer extends Canvas{
   constructor(canvas_id){
     super(canvas_id);
-    this.block_type_counter = {};
+
+    this.block_id_counter = 0;
+    this.used_ids = [];
+
     this.blocks_objs = {};
     this.selected_block = undefined;
 
@@ -58,47 +61,39 @@ class ObjectDrawer extends Canvas{
     });
   }
 
-  connect_blocks(a, b, type="basic", label){
+  connect_blocks(a, b, label){
     let overlays = [];
 
     if (label && label.length > 0) {
       overlays.push(["Label", { label: label, location: 0.5, id: "conn_label" }]);
     }
 
+    let connection_type = this.get_connection_type(this.blocks_objs[a]);
+
     this.instance.connect({
       source: a,
       target: b,
-      type: type,
+      type: connection_type,
       overlays: overlays
     });
   }
 
   draw_block(block, set_id){
-    let block_type = block.constructor.name;
-    if(block instanceof EventBlock){
-      block_type = EventBlock.name;
-    }
-
-    let connection_type = "basic";
-    if (block instanceof DecisionBlock) {
-      connection_type = "decision";
-    }
+    let connection_type = this.get_connection_type(block);
 
     if(set_id){
       var id = set_id;
-      let block_type = set_id.split("_")[0];
-      let block_indx = parseInt(set_id.split("_")[1]);
-      this.block_type_counter[block_type] = block_indx + 1;
     }else{
-      if (block_type in this.block_type_counter){
-        var id = block_type + "_" + this.block_type_counter[block_type];
-        this.block_type_counter[block_type]++;
-      }else{
-        var id = block_type + "_0";
-        this.block_type_counter[block_type] = 1;
+      var id = "block_" + this.block_id_counter;
+      this.block_id_counter++;
+
+      while (this.used_ids.includes(id)){
+        id = "block_" + this.block_id_counter;
+        this.block_id_counter++;
       }
     }
 
+    this.used_ids.push(id);
     this.blocks_objs[id] = block;
 
     let dom = this.create_block(id, block.position, connection_type);
@@ -188,5 +183,14 @@ class ObjectDrawer extends Canvas{
     }
 
     return label;
+  }
+
+  get_connection_type(block){
+    let connection_type = "basic";
+    if (block instanceof DecisionBlock) {
+      connection_type = "decision";
+    }
+
+    return connection_type;
   }
 }

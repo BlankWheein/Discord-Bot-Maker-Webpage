@@ -11,14 +11,7 @@ class CommandLoader{
     });
 
     json["connections"].forEach(e => {
-      let type = "basic";
-
-      let from_class = e.from.split("_")[0];
-      if (from_class == "DecisionBlock") {
-        type = "decision";
-      }
-
-      this.object_drawer.connect_blocks(e.from, e.to, type, e.label);
+      this.object_drawer.connect_blocks(e.from, e.to, e.label);
     });
   }
 }

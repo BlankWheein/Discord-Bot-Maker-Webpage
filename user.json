@@ -37,7 +37,7 @@
     "commands": [
       {
         "command": "OnReadyBlock",
-        "id": "EventBlock_0",
+        "id": "get_ready",
         "position": [
           75,
           43
@@ -46,7 +46,7 @@
       },
       {
         "command": "SetChannelBlock",
-        "id": "SetChannelBlock_0",
+        "id": "set_that_channel",
         "position": [
           67,
           144
@@ -57,7 +57,7 @@
       },
       {
         "command": "SetVariableBlock",
-        "id": "SetVariableBlock_0",
+        "id": "that_var_has_value",
         "position": [
           51,
           242
@@ -70,7 +70,7 @@
       },
       {
         "command": "SetVariableBlock",
-        "id": "SetVariableBlock_1",
+        "id": "this_one_as_well",
         "position": [
           51,
           334
@@ -83,7 +83,7 @@
       },
       {
         "command": "DecisionBlock",
-        "id": "DecisionBlock_0",
+        "id": "decide_plz",
         "position": [
           309,
           294
@@ -96,7 +96,7 @@
       },
       {
         "command": "SendMessageBlock",
-        "id": "SendMessageBlock_1",
+        "id": "send_that",
         "position": [
           311,
           138
@@ -110,7 +110,7 @@
       },
       {
         "command": "SendMessageBlock",
-        "id": "SendMessageBlock_2",
+        "id": "that_send",
         "position": [
           514,
           263
@@ -124,7 +124,7 @@
       },
       {
         "command": "SendMessageBlock",
-        "id": "SendMessageBlock_3",
+        "id": "thnd_seat",
         "position": [
           284,
           446
@@ -139,38 +139,38 @@
     ],
     "connections": [
       {
-        "from": "EventBlock_0",
-        "to": "SetChannelBlock_0",
+        "from": "get_ready",
+        "to": "set_that_channel",
         "label": ""
       },
       {
-        "from": "SetChannelBlock_0",
-        "to": "SetVariableBlock_0",
+        "from": "set_that_channel",
+        "to": "that_var_has_value",
         "label": ""
       },
       {
-        "from": "SetVariableBlock_0",
-        "to": "SetVariableBlock_1",
+        "from": "that_var_has_value",
+        "to": "this_one_as_well",
         "label": ""
       },
       {
-        "from": "SetVariableBlock_1",
-        "to": "DecisionBlock_0",
+        "from": "this_one_as_well",
+        "to": "decide_plz",
         "label": ""
       },
       {
-        "from": "DecisionBlock_0",
-        "to": "SendMessageBlock_1",
+        "from": "decide_plz",
+        "to": "send_that",
         "label": "true"
       },
       {
-        "from": "DecisionBlock_0",
-        "to": "SendMessageBlock_2",
+        "from": "decide_plz",
+        "to": "that_send",
         "label": "false"
       },
       {
-        "from": "DecisionBlock_0",
-        "to": "SendMessageBlock_3",
+        "from": "decide_plz",
+        "to": "thnd_seat",
         "label": "either"
       }
     ]
