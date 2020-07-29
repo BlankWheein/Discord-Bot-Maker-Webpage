@@ -1,8 +1,8 @@
 class SetChannelBlock extends ActionBlock {
   constructor(params) {
-    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
+    super(getParam(params, "position", [0, 0]));
 
-    this.id = isDefined(params["id"]) ? params["id"] : "736592970601594921";
+    this.id = getParam(params, "id", "736592970601594921");
 
     this.update_text();
   }

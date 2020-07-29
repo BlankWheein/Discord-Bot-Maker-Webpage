@@ -1,11 +1,11 @@
 class SendMessageBlock extends ActionBlock {
   constructor(params){
-    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
+    super(getParam(params, "position", [0, 0]));
 
-    this.message = isDefined(params["message"]) ?  params["message"] : "Message";
-    this.channel = isDefined(params["channel"]) ?  params["channel"] : "channel";
-    this.save_var = isDefined(params["save_var"]) ? params["save_var"] : "var1";
-    this.delete_after = isDefined(params["delete_after"]) ? params["delete_after"] : "20";
+    this.message = getParam(params, "message", "Message");
+    this.channel = getParam(params, "channel", "channel");
+    this.save_var = getParam(params, "save_var", "var1");
+    this.delete_after = getParam(params, "delete_after", "20");
     
     this.update_text();
   }

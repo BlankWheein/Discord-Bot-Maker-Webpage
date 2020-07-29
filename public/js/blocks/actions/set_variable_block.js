@@ -1,10 +1,10 @@
 class SetVariableBlock extends ActionBlock {
   constructor(params) {
-    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
+    super(getParam(params, "position", [0, 0]));
 
-    this.content = isDefined(params["content"]) ? params["content"] : "TuckFaaha";
-    this.type = isDefined(params["type"]) ? params["type"] : "str";
-    this.var_name = isDefined(params["var_name"]) ? params["var_name"] : "var1";
+    this.content = getParam(params, "content", "TuckFaaha");
+    this.type = getParam(params, "type", "str");
+    this.var_name = getParam(params, "var_name", "var1");
 
     this.update_text();
   }

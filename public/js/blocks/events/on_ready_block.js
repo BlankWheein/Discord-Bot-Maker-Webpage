@@ -1,6 +1,6 @@
 class OnReadyBlock extends EventBlock {
   constructor(params) {
-    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
+    super(getParam(params, "position", [0, 0]));
 
     this.update_text();
   }
