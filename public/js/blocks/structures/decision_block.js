@@ -1,10 +1,10 @@
 class DecisionBlock extends StructureBlock {
-  constructor(x = 0, y = 0, var1="var1", var2="var2", operator="==") {
-    super([x, y]);
+  constructor(params) {
+    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
 
-    this.var1 = var1;
-    this.var2 = var2;
-    this.operator = operator;
+    this.var1 = isDefined(params["var1"]) ? params["var1"] : "var1";
+    this.var2 = isDefined(params["var2"]) ? params["var2"] : "var2";
+    this.operator = isDefined(params["operator"]) ? params["operator"] : "==";
 
     this.update_text();
   }
@@ -53,5 +53,9 @@ class DecisionBlock extends StructureBlock {
         variable: "var2"
       }
     ];
+  }
+
+  get_custom_variables() {
+    return [];
   }
 }

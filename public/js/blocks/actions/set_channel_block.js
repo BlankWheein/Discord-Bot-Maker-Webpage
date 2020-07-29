@@ -1,8 +1,8 @@
 class SetChannelBlock extends ActionBlock {
-  constructor(x = 0, y = 0, id = "736592970601594921") {
-    super([x, y]);
+  constructor(params) {
+    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
 
-    this.id = id;
+    this.id = isDefined(params["id"]) ? params["id"] : "736592970601594921";
 
     this.update_text();
   }
@@ -30,5 +30,9 @@ class SetChannelBlock extends ActionBlock {
         variable: "id"
       }
     ];
+  }
+
+  get_custom_variables() {
+    return [];
   }
 }

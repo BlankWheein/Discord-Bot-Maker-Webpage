@@ -1,10 +1,10 @@
 class SetVariableBlock extends ActionBlock {
-  constructor(x = 0, y = 0, content = "TuckFaaha", type = "str", var_name = "var1") {
-    super([x, y]);
+  constructor(params) {
+    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
 
-    this.content = content;
-    this.type = type;
-    this.var_name = var_name;
+    this.content = isDefined(params["content"]) ? params["content"] : "TuckFaaha";
+    this.type = isDefined(params["type"]) ? params["type"] : "str";
+    this.var_name = isDefined(params["var_name"]) ? params["var_name"] : "var1";
 
     this.update_text();
   }
@@ -18,7 +18,7 @@ class SetVariableBlock extends ActionBlock {
       setVariable: {
         content: this.content,
         type: this.type,
-        var: this.var_name
+        var_name: this.var_name
       }
     };
   }
@@ -46,6 +46,12 @@ class SetVariableBlock extends ActionBlock {
         type: "text",
         variable: "content"
       }
+    ];
+  }
+
+  get_custom_variables() {
+    return [
+      this.var_name
     ];
   }
 }

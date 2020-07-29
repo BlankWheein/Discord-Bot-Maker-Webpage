@@ -1,12 +1,12 @@
 class SendMessageBlock extends ActionBlock {
-  constructor(x = 0, y = 0, message="", channel="channel", save_var="var1", delete_after=20) {
-    super([x, y]);
+  constructor(params){
+    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
 
-    this.message = message;
-    this.channel = channel;
-    this.save_var = save_var;
-    this.delete_after = delete_after;
-
+    this.message = isDefined(params["message"]) ?  params["message"] : "Message";
+    this.channel = isDefined(params["channel"]) ?  params["channel"] : "channel";
+    this.save_var = isDefined(params["save_var"]) ? params["save_var"] : "var1";
+    this.delete_after = isDefined(params["delete_after"]) ? params["delete_after"] : "20";
+    
     this.update_text();
   }
 
@@ -19,7 +19,7 @@ class SendMessageBlock extends ActionBlock {
       sendMessage: {
         message: this.message,
         channel: this.channel,
-        var: this.save_var,
+        save_var: this.save_var,
         delete_after: this.delete_after
       }
     };
@@ -61,6 +61,12 @@ class SendMessageBlock extends ActionBlock {
         type: "number",
         variable: "delete_after"
       }
+    ];
+  }
+
+  get_custom_variables() {
+    return [
+      this.save_var
     ];
   }
 }

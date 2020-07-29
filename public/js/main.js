@@ -4,11 +4,18 @@ jsPlumb.ready(function () {
   let instructions_url = window.location.href + "/canvas_instructions";
   fetch(instructions_url).then(response => response.json()).then(json => {
     const cmd_loader = new CommandLoader(drawer);
-    cmd_loader.draw_command(json);
+    cmd_loader.draw_command(json.response);
   });
 
-  $("#add-command").click(() => {
-    alert("Add Command");
+  $("#save-command").click(() => {
+    const cmd_saver = new CommandSaver(drawer);
+    let commands_json = JSON.stringify(cmd_saver.get_commands_json());
+    console.log(cmd_saver.get_commands_json());
+
+    let command_save_url = window.location.href + "/save_command";
+    $.post(command_save_url, { command_json: commands_json }, function (result) {
+      console.log(result);
+    });
   });
 
   $("#add-on-ready").click(() => {

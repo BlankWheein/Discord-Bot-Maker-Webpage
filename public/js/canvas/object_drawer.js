@@ -5,6 +5,8 @@ class ObjectDrawer extends Canvas{
     this.block_id_counter = 0;
     this.used_ids = [];
 
+    this.defined_variables = [];
+
     this.blocks_objs = {};
     this.selected_block = undefined;
 
@@ -107,7 +109,7 @@ class ObjectDrawer extends Canvas{
     $(dom).click(() => {
       // If the node was clicked while the Shift key was held
       if (pressed_keys[SHIFT_KEY_CODE]) {
-        // delete ctx.blocks_objs[$(dom).attr("id")];
+        delete ctx.blocks_objs[$(dom).attr("id")];
         ctx.instance.remove(dom);
       }else{
         this.selected_block = block;

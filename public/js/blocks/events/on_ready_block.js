@@ -1,6 +1,6 @@
 class OnReadyBlock extends EventBlock {
-  constructor(x = 0, y = 0) {
-    super([x, y]);
+  constructor(params) {
+    super(isDefined(params["position"]) ? params["position"] : [0, 0]);
 
     this.update_text();
   }
@@ -18,6 +18,10 @@ class OnReadyBlock extends EventBlock {
   }
 
   get_form_info() {
+    return [];
+  }
+
+  get_custom_variables() {
     return [];
   }
 }

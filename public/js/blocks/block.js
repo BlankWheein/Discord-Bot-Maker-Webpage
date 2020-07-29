@@ -59,12 +59,7 @@ class Block{
     this.update_dom_text("Block");
   }
 
-  
-
-  
-
-  
-  
-
-  
+  get_custom_variables(){
+    return [];
+  }
 }

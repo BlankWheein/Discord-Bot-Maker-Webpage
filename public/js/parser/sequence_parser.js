@@ -53,13 +53,12 @@ class SequenceParser{
     try{
       let head = undefined;
 
-      Object.keys(this.object_drawer.blocks_objs).forEach(e => {
-        let obj = this.object_drawer.blocks_objs[e];
-        if (obj instanceof EventBlock){
-          head = obj;
+      for (let [k, v] of this.object_drawer.blocks_objs){
+        if (v instanceof EventBlock) {
+          head = v;
           return;
         }
-      });
+      }
 
       if (head){
         let json = create_json(head, {});
