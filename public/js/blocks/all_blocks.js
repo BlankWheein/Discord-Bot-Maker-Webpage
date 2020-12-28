@@ -3,5 +3,6 @@ const ALL_BLOCKS = {
   "DecisionBlock": DecisionBlock,
   "SendMessageBlock": SendMessageBlock,
   "SetChannelBlock": SetChannelBlock,
-  "SetVariableBlock": SetVariableBlock
+  "SetVariableBlock": SetVariableBlock,
+  "GetGuild": GetGuild
 }

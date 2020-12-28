@@ -38,6 +38,10 @@ jsPlumb.ready(function () {
     drawer.draw_block(new SetChannelBlock());
   });
 
+  $("#add-get-guild").click(() => {
+    drawer.draw_block(new GetGuild());
+  });
+
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);
     a.generate_event_order();

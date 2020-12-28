@@ -1,3 +1,178 @@
 {
-  
+  "test": {
+    "commands": [
+      {
+        "command": "OnReadyBlock",
+        "id": "EventBlock_0",
+        "position": [
+          75,
+          43
+        ],
+        "variables": {}
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "SendMessageBlock_0",
+        "position": [
+          311,
+          138
+        ],
+        "variables": {
+          "message": "Test",
+          "channel": "channel",
+          "save_var": "",
+          "delete_after": "20"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "from": "EventBlock_0",
+        "to": "SendMessageBlock_0",
+        "label": ""
+      }
+    ]
+  },
+  "if-command": {
+    "commands": [
+      {
+        "command": "OnReadyBlock",
+        "id": "get_ready",
+        "position": [
+          75,
+          43
+        ],
+        "variables": {}
+      },
+      {
+        "command": "SetChannelBlock",
+        "id": "set_that_channel",
+        "position": [
+          67,
+          144
+        ],
+        "variables": {
+          "id": "736592970601594921"
+        }
+      },
+      {
+        "command": "SetVariableBlock",
+        "id": "that_var_has_value",
+        "position": [
+          51,
+          242
+        ],
+        "variables": {
+          "content": "var_content",
+          "type": "str",
+          "var_name": "var1"
+        }
+      },
+      {
+        "command": "SetVariableBlock",
+        "id": "this_one_as_well",
+        "position": [
+          51,
+          334
+        ],
+        "variables": {
+          "content": "var_content",
+          "type": "str",
+          "var_name": "var2"
+        }
+      },
+      {
+        "command": "DecisionBlock",
+        "id": "decide_plz",
+        "position": [
+          309,
+          294
+        ],
+        "variables": {
+          "var1": "var1",
+          "var2": "var2",
+          "operator": "=="
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "send_that",
+        "position": [
+          311,
+          138
+        ],
+        "variables": {
+          "message": "Variables are equal",
+          "channel": "channel",
+          "save_var": "",
+          "delete_after": "20"
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "that_send",
+        "position": [
+          514,
+          263
+        ],
+        "variables": {
+          "message": "Variables are different",
+          "channel": "channel",
+          "save_var": "",
+          "delete_after": "20"
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "thnd_seat",
+        "position": [
+          284,
+          446
+        ],
+        "variables": {
+          "message": "If hsa ended",
+          "channel": "channel",
+          "save_var": "",
+          "delete_after": "20"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "from": "get_ready",
+        "to": "set_that_channel",
+        "label": ""
+      },
+      {
+        "from": "set_that_channel",
+        "to": "that_var_has_value",
+        "label": ""
+      },
+      {
+        "from": "that_var_has_value",
+        "to": "this_one_as_well",
+        "label": ""
+      },
+      {
+        "from": "this_one_as_well",
+        "to": "decide_plz",
+        "label": ""
+      },
+      {
+        "from": "decide_plz",
+        "to": "send_that",
+        "label": "true"
+      },
+      {
+        "from": "decide_plz",
+        "to": "that_send",
+        "label": "false"
+      },
+      {
+        "from": "decide_plz",
+        "to": "thnd_seat",
+        "label": "either"
+      }
+    ]
+  }
 }
