@@ -42,6 +42,10 @@ class Block {
     Object.keys(new_params).forEach(e => {
       let v = new_params[e];
       this[e] = v;
+
+      if("json_compiler" in this){
+        this.json_compiler[e] = v;
+      }
     });
 
     this.update_text();
