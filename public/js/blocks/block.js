@@ -4,6 +4,8 @@ class Block {
     this.position = position;
     this.dom = undefined;
     this.connections = [];
+    this.form_info = [];
+    this.custom_vars = [];
     
   }
 
@@ -43,21 +45,25 @@ class Block {
       let v = new_params[e];
       this[e] = v;
 
+      
+
       if("json_compiler" in this){
-        this.json_compiler[e] = v;
-      }
+        var key = Object.keys(this.json_compiler)[0];
+        this.json_compiler[key][e] = v;
+        }
     });
 
+    
     this.update_text();
   }
 
-  // Overritable functions
+  // Overwritable functions
   get_form_info() {
-    return [];
+    return this.form_info;
   }
 
   compile_json() {
-    return {};
+    return this.json_compiler;
   }
 
   update_text() {
@@ -65,7 +71,7 @@ class Block {
   }
 
   get_custom_variables() {
-    return [];
+    return this.custom_vars;
   }
 
 
@@ -85,43 +91,24 @@ class Block {
     }
   }
 
-  // Member Target
-  add_target() {
-    this.target = getParam(this.params, "target", "181125548389433344");
+  //Generic field
+  add_field(name, type, var_, is_variable = false) {
+    this[var_] = getParam(this.params, var_, name);
+
     this.form_info.push(
       {
-        name: "Member Id",
-        value: this.target,
-        type: "text",
-        variable: "target"
+        name: name,
+        value: this[var_],
+        type: type,
+        variable: var_
       }
     )
-
+      
     for(let key in this.json_compiler){
-      this.json_compiler[key].target = this.target;
+      this.json_compiler[key][var_] = this[var_];
     }
-  }
-
-
-   // Role Target
-   add_roles() {
-    this.roles = getParam(this.params, "roles", "793507089577803797");
-   
-      this.form_info.push(
-        {
-          name: "Role ID",
-          value: this.roles,
-          type: "text",
-          variable: "roles"
-        }
-      )
-    
-    
-    
-    
-
-    for(let key in this.json_compiler){
-      this.json_compiler[key].roles = this.roles;
+    if(is_variable) {
+      this.custom_vars.push(var_);
     }
   }
 

@@ -11,24 +11,61 @@
         "variables": {}
       },
       {
-        "command": "RemoveRolesBlock",
-        "id": "block_0",
+        "command": "SetGuildBlock",
+        "id": "block_1",
         "position": [
-          607,
-          357
+          290,
+          136
         ],
         "variables": {
-          "reason": "Reason Not Specified",
-          "print": "",
+          "id": "736249300807450665",
+          "print": ""
+        }
+      },
+      {
+        "command": "GetRoleBlock",
+        "id": "block_0",
+        "position": [
+          530,
+          124
+        ],
+        "variables": {
+          "type": "id",
+          "name": "Name",
+          "id": "793507089577803797",
+          "var": "role",
+          "print": ""
+        }
+      },
+      {
+        "command": "AddRolesBlock",
+        "id": "block_2",
+        "position": [
+          735,
+          142
+        ],
+        "variables": {
           "target": "181125548389433344",
-          "roles": "793507089577803797"
+          "roles": "{role}",
+          "reason": "Reason",
+          "print": ""
         }
       }
     ],
     "connections": [
       {
         "from": "EventBlock_0",
+        "to": "block_1",
+        "label": ""
+      },
+      {
+        "from": "block_1",
         "to": "block_0",
+        "label": ""
+      },
+      {
+        "from": "block_0",
+        "to": "block_2",
         "label": ""
       }
     ]

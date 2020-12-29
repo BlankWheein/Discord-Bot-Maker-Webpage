@@ -1,8 +1,14 @@
 class SetGuildBlock extends ActionBlock {
   constructor(params) {
     super(getParam(params, "position", [0, 0]));
+    this.params = params;
 
-    this.id = getParam(params, "id", "736249300807450665");
+    this.json_compiler = {
+      setGuild: {}
+    }
+
+    this.add_field("ID", "int", "id");
+    this.add_print();
 
     this.update_text();
   }
@@ -11,28 +17,4 @@ class SetGuildBlock extends ActionBlock {
     this.update_dom_text("Set Guild ID");
   }
 
-  compile_json() {
-    let obj = {
-      setGuild: {
-        id: this.id
-      }
-    };
-
-    return obj;
-  }
-
-  get_form_info() {
-    return [
-      {
-        name: "Guild ID",
-        value: this.id,
-        type: "text",
-        variable: "id"
-      }
-    ];
-  }
-
-  get_custom_variables() {
-    return [];
-  }
 }

@@ -62,6 +62,78 @@ jsPlumb.ready(function () {
     drawer.draw_block(new RemoveRolesBlock());
   });
 
+  $("#add-raise-except").click(() => {
+    drawer.draw_block(new RaiseExceptBlock());
+  });
+
+
+
+
+
+
+  $("#add-append-to-list").click(() => {
+    drawer.draw_block(new AppendToListBlock());
+  });
+
+  $("#add-create-list").click(() => {
+    drawer.draw_block(new CreateListBlock());
+  });
+
+
+
+
+  $("#add-get-argument").click(() => {
+    drawer.draw_block(new GetArgumentBlock());
+  });
+
+
+
+  $("#add-get-member").click(() => {
+    drawer.draw_block(new GetMemberBlock());
+  });
+
+  $("#add-get-role").click(() => {
+    drawer.draw_block(new GetRoleBlock());
+  });
+
+
+  $("#add-pin-message").click(() => {
+    drawer.draw_block(new PinMessageBlock());
+  });
+
+  $("#add-pop-from-list").click(() => {
+    drawer.draw_block(new PopFromListBlock());
+  });
+
+  $("#add-print").click(() => {
+    drawer.draw_block(new PrintBlock());
+  });
+
+  $("#add-purge").click(() => {
+    drawer.draw_block(new PurgeBlock());
+  });
+
+
+
+
+
+  $("#add-set-pressence").click(() => {
+    drawer.draw_block(new SetPressenceBlock());
+  });
+
+
+
+
+
+  $("#add-unpin-message").click(() => {
+    drawer.draw_block(new UnpinMessageBlock());
+  });
+
+  $("#add-wait").click(() => {
+    drawer.draw_block(new WaitBlock());
+  });
+
+
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);
     a.generate_event_order();
