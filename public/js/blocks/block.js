@@ -1,9 +1,10 @@
-class Block{
-  constructor(position = [0, 0]){
+class Block {
+  constructor(position = [0, 0]) {
     this.text = "";
     this.position = position;
     this.dom = undefined;
     this.connections = [];
+    
   }
 
   // General block functions
@@ -59,7 +60,25 @@ class Block{
     this.update_dom_text("Block");
   }
 
-  get_custom_variables(){
+  get_custom_variables() {
     return [];
+  }
+
+
+  //Print stuff
+
+  add_print(params) {
+    this.print = getParam(params, "print", "");
+    this.form_info.push(
+      {
+      name: "print",
+      value: this.print,
+      type: "text",
+      variable: "print",}
+    )
+
+    for(let key in this.json_compiler){
+      this.json_compiler[key].print = this.print;
+    }
   }
 }

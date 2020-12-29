@@ -18,7 +18,7 @@ class SetVariableBlock extends ActionBlock {
       setVariable: {
         content: this.content,
         type: this.type,
-        var_name: this.var_name
+        var: this.var_name
       }
     };
   }

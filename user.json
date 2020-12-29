@@ -5,8 +5,8 @@
         "command": "OnReadyBlock",
         "id": "EventBlock_0",
         "position": [
-          75,
-          43
+          98,
+          126
         ],
         "variables": {}
       },
@@ -14,8 +14,8 @@
         "command": "SendMessageBlock",
         "id": "SendMessageBlock_0",
         "position": [
-          311,
-          138
+          457,
+          180
         ],
         "variables": {
           "message": "Test",
@@ -65,7 +65,7 @@
         "variables": {
           "content": "var_content",
           "type": "str",
-          "var_name": "var1"
+          "var": "var1"
         }
       },
       {
@@ -78,7 +78,7 @@
         "variables": {
           "content": "var_content",
           "type": "str",
-          "var_name": "var2"
+          "var": "var1"
         }
       },
       {
@@ -98,13 +98,13 @@
         "command": "SendMessageBlock",
         "id": "send_that",
         "position": [
-          311,
-          138
+          296,
+          99
         ],
         "variables": {
           "message": "Variables are equal",
           "channel": "channel",
-          "save_var": "",
+          "var": "msg",
           "delete_after": "20"
         }
       },
@@ -118,7 +118,7 @@
         "variables": {
           "message": "Variables are different",
           "channel": "channel",
-          "save_var": "",
+          "var": "msg",
           "delete_after": "20"
         }
       },
@@ -126,14 +126,74 @@
         "command": "SendMessageBlock",
         "id": "thnd_seat",
         "position": [
-          284,
-          446
+          355,
+          466
         ],
         "variables": {
           "message": "If hsa ended",
           "channel": "channel",
-          "save_var": "",
+          "var": "msg",
           "delete_after": "20"
+        }
+      },
+      {
+        "command": "ExitCommand",
+        "id": "block_0",
+        "position": [
+          610,
+          88
+        ],
+        "variables": {
+          "print": "Exitted command"
+        }
+      },
+      {
+        "command": "SetCategoryBlock",
+        "id": "block_3",
+        "position": [
+          933,
+          273
+        ],
+        "variables": {
+          "id": "736745547917951017"
+        }
+      },
+      {
+        "command": "SetGuildBlock",
+        "id": "block_2",
+        "position": [
+          763,
+          260
+        ],
+        "variables": {
+          "id": "736249300807450665"
+        }
+      },
+      {
+        "command": "AddRolesBlock",
+        "id": "block_1",
+        "position": [
+          936,
+          400
+        ],
+        "variables": {
+          "target": "181125548389433344",
+          "roles": "793507089577803797",
+          "reason": ""
+        }
+      },
+      {
+        "command": "RemoveRolesBlock",
+        "id": "block_4",
+        "position": [
+          867,
+          498
+        ],
+        "variables": {
+          "target": "181125548389433344",
+          "roles": "793507089577803797",
+          "reason": "Reason Not Specified",
+          "print": ""
         }
       }
     ],
@@ -172,6 +232,31 @@
         "from": "decide_plz",
         "to": "thnd_seat",
         "label": "either"
+      },
+      {
+        "from": "send_that",
+        "to": "block_0",
+        "label": ""
+      },
+      {
+        "from": "that_send",
+        "to": "block_2",
+        "label": ""
+      },
+      {
+        "from": "block_3",
+        "to": "block_1",
+        "label": ""
+      },
+      {
+        "from": "block_2",
+        "to": "block_3",
+        "label": ""
+      },
+      {
+        "from": "block_1",
+        "to": "block_4",
+        "label": ""
       }
     ]
   }

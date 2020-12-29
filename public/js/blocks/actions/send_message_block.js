@@ -4,7 +4,7 @@ class SendMessageBlock extends ActionBlock {
 
     this.message = getParam(params, "message", "Message");
     this.channel = getParam(params, "channel", "channel");
-    this.save_var = getParam(params, "save_var", "var1");
+    this.save_var = getParam(params, "var", "msg");
     this.delete_after = getParam(params, "delete_after", "20");
     
     this.update_text();
@@ -19,7 +19,7 @@ class SendMessageBlock extends ActionBlock {
       sendMessage: {
         message: this.message,
         channel: this.channel,
-        save_var: this.save_var,
+        var: this.save_var,
         delete_after: this.delete_after
       }
     };

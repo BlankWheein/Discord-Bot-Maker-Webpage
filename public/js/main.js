@@ -42,6 +42,26 @@ jsPlumb.ready(function () {
     drawer.draw_block(new GetGuild());
   });
 
+  $("#add-exit-command").click(() => {
+    drawer.draw_block(new ExitCommand());
+  });
+
+  $("#add-set-category").click(() => {
+    drawer.draw_block(new SetCategoryBlock());
+  });
+
+  $("#add-set-guild").click(() => {
+    drawer.draw_block(new SetGuildBlock());
+  });
+
+  $("#add-add-roles").click(() => {
+    drawer.draw_block(new AddRolesBlock());
+  });
+  
+  $("#add-remove-roles").click(() => {
+    drawer.draw_block(new RemoveRolesBlock());
+  });
+
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);
     a.generate_event_order();

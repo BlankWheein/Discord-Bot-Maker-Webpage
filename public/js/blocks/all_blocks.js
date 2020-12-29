@@ -4,5 +4,10 @@ const ALL_BLOCKS = {
   "SendMessageBlock": SendMessageBlock,
   "SetChannelBlock": SetChannelBlock,
   "SetVariableBlock": SetVariableBlock,
-  "GetGuild": GetGuild
+  "GetGuild": GetGuild,
+  "ExitCommand": ExitCommand,
+  "SetCategoryBlock": SetCategoryBlock,
+  "SetGuildBlock": SetGuildBlock,
+  "AddRolesBlock": AddRolesBlock,
+  "RemoveRolesBlock": RemoveRolesBlock,
 }

@@ -2,7 +2,7 @@ class SetChannelBlock extends ActionBlock {
   constructor(params) {
     super(getParam(params, "position", [0, 0]));
 
-    this.id = getParam(params, "id", "736592970601594921");
+    this.id = getParam(params, "id", "736648548380049541");
 
     this.update_text();
   }
