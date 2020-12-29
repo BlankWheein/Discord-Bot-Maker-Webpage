@@ -11,24 +11,24 @@
         "variables": {}
       },
       {
-        "command": "SendMessageBlock",
-        "id": "SendMessageBlock_0",
+        "command": "RemoveRolesBlock",
+        "id": "block_0",
         "position": [
-          457,
-          180
+          607,
+          357
         ],
         "variables": {
-          "message": "Test",
-          "channel": "channel",
-          "save_var": "",
-          "delete_after": "20"
+          "reason": "Reason Not Specified",
+          "print": "",
+          "target": "181125548389433344",
+          "roles": "793507089577803797"
         }
       }
     ],
     "connections": [
       {
         "from": "EventBlock_0",
-        "to": "SendMessageBlock_0",
+        "to": "block_0",
         "label": ""
       }
     ]

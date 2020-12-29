@@ -70,19 +70,60 @@ class Block {
 
 
   //Print stuff
-
-  add_print(params) {
-    this.print = getParam(params, "print", "");
+  add_print() {
+    this.print = getParam(this.params, "print", "");
     this.form_info.push(
       {
-      name: "print",
+      name: "Print",
       value: this.print,
       type: "text",
-      variable: "print",}
+      variable: "print"}
     )
 
     for(let key in this.json_compiler){
       this.json_compiler[key].print = this.print;
     }
   }
+
+  // Member Target
+  add_target() {
+    this.target = getParam(this.params, "target", "181125548389433344");
+    this.form_info.push(
+      {
+        name: "Member Id",
+        value: this.target,
+        type: "text",
+        variable: "target"
+      }
+    )
+
+    for(let key in this.json_compiler){
+      this.json_compiler[key].target = this.target;
+    }
+  }
+
+
+   // Role Target
+   add_roles() {
+    this.roles = getParam(this.params, "roles", "793507089577803797");
+   
+      this.form_info.push(
+        {
+          name: "Role ID",
+          value: this.roles,
+          type: "text",
+          variable: "roles"
+        }
+      )
+    
+    
+    
+    
+
+    for(let key in this.json_compiler){
+      this.json_compiler[key].roles = this.roles;
+    }
+  }
+
+
 }
