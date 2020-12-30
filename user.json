@@ -5,49 +5,66 @@
         "command": "OnReadyBlock",
         "id": "EventBlock_0",
         "position": [
-          98,
-          126
+          -1,
+          17
         ],
         "variables": {}
       },
       {
-        "command": "SetGuildBlock",
-        "id": "block_1",
+        "command": "GetArgumentBlock",
+        "id": "block_10",
         "position": [
-          290,
-          136
+          190,
+          37
         ],
         "variables": {
-          "id": "736249300807450665",
+          "index": "0",
+          "type": "discord.Member",
+          "var": "user",
           "print": ""
         }
       },
       {
-        "command": "GetRoleBlock",
+        "command": "SendMessageBlock",
+        "id": "block_11",
+        "position": [
+          399,
+          41
+        ],
+        "variables": {
+          "message": "Fuck you {user.mention}",
+          "channel": "channel",
+          "var": "var",
+          "delete_after": "20",
+          "print": ""
+        }
+      },
+      {
+        "command": "GetArgumentBlock",
         "id": "block_0",
         "position": [
-          530,
-          124
+          641,
+          122
         ],
         "variables": {
-          "type": "id",
-          "name": "Name",
-          "id": "793507089577803797",
-          "var": "role",
+          "index": "1",
+          "type": "discord.Member",
+          "var": "user2",
           "print": ""
         }
       },
       {
-        "command": "AddRolesBlock",
-        "id": "block_2",
+        "command": "SendMessageBlock",
+        "id": "block_1",
         "position": [
-          735,
-          142
+          640,
+          238
         ],
         "variables": {
-          "target": "181125548389433344",
-          "roles": "{role}",
-          "reason": "Reason",
+          "message": "but i love you {user2.mention}",
+          "channel": "channel",
+          "var": "var",
+          "delete_after": null,
           "print": ""
         }
       }
@@ -55,17 +72,22 @@
     "connections": [
       {
         "from": "EventBlock_0",
-        "to": "block_1",
+        "to": "block_10",
         "label": ""
       },
       {
-        "from": "block_1",
+        "from": "block_10",
+        "to": "block_11",
+        "label": ""
+      },
+      {
+        "from": "block_11",
         "to": "block_0",
         "label": ""
       },
       {
         "from": "block_0",
-        "to": "block_2",
+        "to": "block_1",
         "label": ""
       }
     ]
@@ -74,225 +96,141 @@
     "commands": [
       {
         "command": "OnReadyBlock",
-        "id": "get_ready",
+        "id": "block_0",
         "position": [
-          75,
-          43
+          8,
+          100
         ],
         "variables": {}
       },
       {
-        "command": "SetChannelBlock",
-        "id": "set_that_channel",
+        "command": "SetGuildBlock",
+        "id": "block_1",
         "position": [
-          67,
-          144
-        ],
-        "variables": {
-          "id": "736592970601594921"
-        }
-      },
-      {
-        "command": "SetVariableBlock",
-        "id": "that_var_has_value",
-        "position": [
-          51,
-          242
-        ],
-        "variables": {
-          "content": "var_content",
-          "type": "str",
-          "var": "var1"
-        }
-      },
-      {
-        "command": "SetVariableBlock",
-        "id": "this_one_as_well",
-        "position": [
-          51,
-          334
-        ],
-        "variables": {
-          "content": "var_content",
-          "type": "str",
-          "var": "var1"
-        }
-      },
-      {
-        "command": "DecisionBlock",
-        "id": "decide_plz",
-        "position": [
-          309,
-          294
-        ],
-        "variables": {
-          "var1": "var1",
-          "var2": "var2",
-          "operator": "=="
-        }
-      },
-      {
-        "command": "SendMessageBlock",
-        "id": "send_that",
-        "position": [
-          296,
+          166,
           99
         ],
         "variables": {
-          "message": "Variables are equal",
-          "channel": "channel",
-          "var": "msg",
-          "delete_after": "20"
+          "id": "736249300807450665",
+          "print": ""
         }
       },
       {
-        "command": "SendMessageBlock",
-        "id": "that_send",
-        "position": [
-          514,
-          263
-        ],
-        "variables": {
-          "message": "Variables are different",
-          "channel": "channel",
-          "var": "msg",
-          "delete_after": "20"
-        }
-      },
-      {
-        "command": "SendMessageBlock",
-        "id": "thnd_seat",
-        "position": [
-          355,
-          466
-        ],
-        "variables": {
-          "message": "If hsa ended",
-          "channel": "channel",
-          "var": "msg",
-          "delete_after": "20"
-        }
-      },
-      {
-        "command": "ExitCommand",
-        "id": "block_0",
-        "position": [
-          610,
-          88
-        ],
-        "variables": {
-          "print": "Exitted command"
-        }
-      },
-      {
-        "command": "SetCategoryBlock",
-        "id": "block_3",
-        "position": [
-          933,
-          273
-        ],
-        "variables": {
-          "id": "736745547917951017"
-        }
-      },
-      {
-        "command": "SetGuildBlock",
+        "command": "SetChannelBlock",
         "id": "block_2",
         "position": [
-          763,
-          260
+          355,
+          98
         ],
         "variables": {
-          "id": "736249300807450665"
+          "id": "736648548380049541",
+          "print": ""
         }
       },
       {
         "command": "AddRolesBlock",
-        "id": "block_1",
+        "id": "block_5",
         "position": [
-          936,
-          400
+          873,
+          221
         ],
         "variables": {
-          "target": "181125548389433344",
-          "roles": "793507089577803797",
-          "reason": ""
+          "target": "{user}",
+          "roles": "{role}",
+          "reason": "You are god",
+          "print": ""
+        }
+      },
+      {
+        "command": "WaitBlock",
+        "id": "block_6",
+        "position": [
+          871,
+          343
+        ],
+        "variables": {
+          "delay": "11",
+          "print": ""
         }
       },
       {
         "command": "RemoveRolesBlock",
-        "id": "block_4",
+        "id": "block_7",
         "position": [
-          867,
-          498
+          784,
+          488
         ],
         "variables": {
-          "target": "181125548389433344",
-          "roles": "793507089577803797",
-          "reason": "Reason Not Specified",
+          "target": "{user}",
+          "roles": "{role}",
+          "reason": "Fuck you",
+          "print": ""
+        }
+      },
+      {
+        "command": "GetMemberBlock",
+        "id": "block_4",
+        "position": [
+          564,
+          107
+        ],
+        "variables": {
+          "type": "name",
+          "value": "pll",
+          "var": "user",
+          "print": ""
+        }
+      },
+      {
+        "command": "GetRoleBlock",
+        "id": "block_3",
+        "position": [
+          735,
+          89
+        ],
+        "variables": {
+          "type": "id",
+          "name": "Name",
+          "id": "793507089577803797",
+          "var": "role",
           "print": ""
         }
       }
     ],
     "connections": [
       {
-        "from": "get_ready",
-        "to": "set_that_channel",
-        "label": ""
-      },
-      {
-        "from": "set_that_channel",
-        "to": "that_var_has_value",
-        "label": ""
-      },
-      {
-        "from": "that_var_has_value",
-        "to": "this_one_as_well",
-        "label": ""
-      },
-      {
-        "from": "this_one_as_well",
-        "to": "decide_plz",
-        "label": ""
-      },
-      {
-        "from": "decide_plz",
-        "to": "send_that",
-        "label": "true"
-      },
-      {
-        "from": "decide_plz",
-        "to": "that_send",
-        "label": "false"
-      },
-      {
-        "from": "decide_plz",
-        "to": "thnd_seat",
-        "label": "either"
-      },
-      {
-        "from": "send_that",
-        "to": "block_0",
-        "label": ""
-      },
-      {
-        "from": "that_send",
-        "to": "block_2",
-        "label": ""
-      },
-      {
-        "from": "block_3",
+        "from": "block_0",
         "to": "block_1",
         "label": ""
       },
       {
+        "from": "block_1",
+        "to": "block_2",
+        "label": ""
+      },
+      {
         "from": "block_2",
+        "to": "block_4",
+        "label": ""
+      },
+      {
+        "from": "block_5",
+        "to": "block_6",
+        "label": ""
+      },
+      {
+        "from": "block_6",
+        "to": "block_7",
+        "label": ""
+      },
+      {
+        "from": "block_4",
         "to": "block_3",
         "label": ""
       },
       {
-        "from": "block_1",
-        "to": "block_4",
+        "from": "block_3",
+        "to": "block_5",
         "label": ""
       }
     ]

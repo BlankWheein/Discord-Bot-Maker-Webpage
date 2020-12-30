@@ -8,8 +8,7 @@ class GetMemberBlock extends ActionBlock {
     }
 
     this.add_field("TYPE", ["id", "name"], "type");
-    this.add_field("Name", "text", "name");
-    this.add_field("ID", "int", "id");
+    this.add_field("Value", "text", "value");
     this.add_field("Var", "text", "var");
     this.add_print();
 

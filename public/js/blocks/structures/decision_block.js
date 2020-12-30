@@ -1,10 +1,27 @@
 class DecisionBlock extends StructureBlock {
   constructor(params) {
     super(getParam(params, "position", [0, 0]));
+    this.params = params;
 
-    this.var1 = getParam(params, "var1", "var1");
-    this.var2 = getParam(params, "var2", "var2");
-    this.operator = getParam(params, "operator", "==");
+    this.json_compiler = {
+      ifStatement: {
+      }
+    }
+
+    this.add_field("Variable 1", "text", "var1");
+    this.add_field("Variable 2", "text", "var2");
+    this.add_field("Operator", [
+      "==",
+      "<",
+      "!=",
+      ">",
+      ">=",
+      "<="
+    ], "operator")
+
+    
+
+    this.add_print();
 
     this.update_text();
   }
@@ -14,48 +31,10 @@ class DecisionBlock extends StructureBlock {
   }
 
   compile_json(true_actions, false_actions) {
-    return {
-      ifStatement: {
-        var1: this.var1,
-        var2: this.var2,
-        operator: this.operator,
-        true: true_actions,
-        false: false_actions
-      }
-    };
+    var key = Object.keys(this.json_compiler)[0];
+    this.json_compiler[key]["true"] = true_actions;
+    this.json_compiler[key]["false"] = false_actions;
+    return this.json_compiler;
   }
 
-  get_form_info() {
-    return [
-      {
-        name: "Variable 1",
-        value: this.var1,
-        type: "text",
-        variable: "var1"
-      },
-      {
-        name: "Operator",
-        value: this.operator,
-        type: [
-          "==",
-          "<",
-          "!=",
-          ">",
-          ">=",
-          "<="
-        ],
-        variable: "operator"
-      },
-      {
-        name: "Variable 2",
-        value: this.var2,
-        type: "text",
-        variable: "var2"
-      }
-    ];
-  }
-
-  get_custom_variables() {
-    return [];
-  }
 }

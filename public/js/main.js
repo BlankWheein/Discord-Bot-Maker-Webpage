@@ -66,11 +66,6 @@ jsPlumb.ready(function () {
     drawer.draw_block(new RaiseExceptBlock());
   });
 
-
-
-
-
-
   $("#add-append-to-list").click(() => {
     drawer.draw_block(new AppendToListBlock());
   });
@@ -79,14 +74,9 @@ jsPlumb.ready(function () {
     drawer.draw_block(new CreateListBlock());
   });
 
-
-
-
   $("#add-get-argument").click(() => {
     drawer.draw_block(new GetArgumentBlock());
   });
-
-
 
   $("#add-get-member").click(() => {
     drawer.draw_block(new GetMemberBlock());
@@ -95,7 +85,6 @@ jsPlumb.ready(function () {
   $("#add-get-role").click(() => {
     drawer.draw_block(new GetRoleBlock());
   });
-
 
   $("#add-pin-message").click(() => {
     drawer.draw_block(new PinMessageBlock());
@@ -113,17 +102,9 @@ jsPlumb.ready(function () {
     drawer.draw_block(new PurgeBlock());
   });
 
-
-
-
-
   $("#add-set-pressence").click(() => {
     drawer.draw_block(new SetPressenceBlock());
   });
-
-
-
-
 
   $("#add-unpin-message").click(() => {
     drawer.draw_block(new UnpinMessageBlock());

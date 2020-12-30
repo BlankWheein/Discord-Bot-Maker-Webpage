@@ -7,7 +7,7 @@ class PurgeBlock extends ActionBlock {
       purge: {}
     }
 
-    this.add_field("Limit", "int", "limit");
+    this.add_field("Limit", "text", "limit");
     this.add_field("Var", "text", "var", true);
 
     this.add_print();
