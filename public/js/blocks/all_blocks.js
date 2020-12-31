@@ -1,6 +1,7 @@
 const ALL_BLOCKS = {
   "OnReadyBlock": OnReadyBlock,
   "DecisionBlock": DecisionBlock,
+  "ForLoopBlock": ForLoopBlock,
   "SendMessageBlock": SendMessageBlock,
   "SetChannelBlock": SetChannelBlock,
   "SetVariableBlock": SetVariableBlock,

@@ -11,84 +11,58 @@
         "variables": {}
       },
       {
-        "command": "GetArgumentBlock",
-        "id": "block_10",
+        "command": "ForLoopBlock",
+        "id": "block_2",
         "position": [
-          190,
-          37
+          370,
+          177
         ],
         "variables": {
-          "index": "0",
-          "type": "discord.Member",
-          "var": "user",
-          "print": ""
+          "type": "stop",
+          "list": "List",
+          "stop": "10",
+          "start": "10",
+          "var": "msg"
         }
       },
       {
-        "command": "SendMessageBlock",
-        "id": "block_11",
+        "command": "PrintBlock",
+        "id": "block_3",
         "position": [
-          399,
-          41
+          639,
+          307
         ],
         "variables": {
-          "message": "Fuck you {user.mention}",
-          "channel": "channel",
-          "var": "var",
-          "delete_after": "20",
-          "print": ""
+          "message": "{msg} "
         }
       },
       {
-        "command": "GetArgumentBlock",
+        "command": "PrintBlock",
         "id": "block_0",
         "position": [
-          641,
-          122
+          406,
+          416
         ],
         "variables": {
-          "index": "1",
-          "type": "discord.Member",
-          "var": "user2",
-          "print": ""
-        }
-      },
-      {
-        "command": "SendMessageBlock",
-        "id": "block_1",
-        "position": [
-          640,
-          238
-        ],
-        "variables": {
-          "message": "but i love you {user2.mention}",
-          "channel": "channel",
-          "var": "var",
-          "delete_after": null,
-          "print": ""
+          "message": "Done"
         }
       }
     ],
     "connections": [
       {
         "from": "EventBlock_0",
-        "to": "block_10",
+        "to": "block_2",
         "label": ""
       },
       {
-        "from": "block_10",
-        "to": "block_11",
-        "label": ""
+        "from": "block_2",
+        "to": "block_3",
+        "label": "loop"
       },
       {
-        "from": "block_11",
+        "from": "block_2",
         "to": "block_0",
-        "label": ""
-      },
-      {
-        "from": "block_0",
-        "to": "block_1",
-        "label": ""
+        "label": "end"
       }
     ]
   },

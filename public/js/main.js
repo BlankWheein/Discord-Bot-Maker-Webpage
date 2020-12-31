@@ -114,6 +114,10 @@ jsPlumb.ready(function () {
     drawer.draw_block(new WaitBlock());
   });
 
+  $("#add-for-loop").click(() => {
+    drawer.draw_block(new ForLoopBlock());
+  });
+
 
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);

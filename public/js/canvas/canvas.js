@@ -37,6 +37,16 @@ class Canvas{
           outlineStroke: "transparent",
           outlineWidth: 4
         }
+      },
+      "loop": {
+        anchor: "Continuous",
+        connector: "StateMachine",
+        paintStyle: {
+          stroke: "#5c96bc",
+          strokeWidth: 2,
+          outlineStroke: "transparent",
+          outlineWidth: 4
+        }
       }
     });
   }
