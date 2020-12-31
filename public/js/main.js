@@ -122,6 +122,10 @@ jsPlumb.ready(function () {
     drawer.draw_block(new WithTypingBlock());
   });
 
+  $("#add-try-catch").click(() => {
+    drawer.draw_block(new TryCatchBlock());
+  });
+
 
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);

@@ -30,6 +30,30 @@ class SequenceParser{
         merge = merge.concat(either_json);
         return merge;
       }
+      if (current_block instanceof TryCatchBlock) {
+        let try_json = [];
+        let catch_json = [];
+        let end_json = [];
+
+        current_block.get_connections("try").forEach(e => {
+          try_json = try_json.concat(create_json(e.target_block, []));
+        });
+
+        current_block.get_connections("catch").forEach(e => {
+          catch_json = catch_json.concat(create_json(e.target_block, []));
+        });
+
+        current_block.get_connections("end").forEach(e => {
+          end_json = end_json.concat(create_json(e.target_block, []));
+        });
+
+        let block = current_block.compile_json(try_json, catch_json);
+
+        let merge = [...current_json];
+        merge = merge.concat(block);
+        merge = merge.concat(end_json);
+        return merge;
+      }
       if (current_block instanceof ForLoopBlock) {
         let loop_json = [];
         let end_json = [];

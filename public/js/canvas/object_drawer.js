@@ -34,6 +34,19 @@ class ObjectDrawer extends Canvas{
             }
           });
         });
+      } else if (info.connection.hasType("trycatch")){
+        info.connection.bind("click", function (conn, originalEvent) {
+          let labels = ["try", "catch", "end"];
+          let new_label = labels[(labels.indexOf(conn.label) + 1) % labels.length];
+          info.connection.removeOverlay("conn_label");
+          info.connection.addOverlay(["Label", { label: new_label, location: 0.5, id: "conn_label" }]);
+
+          ctx.blocks_objs[info.sourceId].connections.forEach(e => {
+            if (e.target_block.dom.id == info.connection.targetId) {
+              e.connection_type = new_label;
+            }
+          });
+        });
       }
       else if (info.connection.hasType("loop")){
         info.connection.bind("click", function (conn, originalEvent) {
@@ -62,7 +75,7 @@ class ObjectDrawer extends Canvas{
             }
           });
         });
-      }
+      } 
     });
 
     this.instance.bind("connectionDetached", function (c) {
@@ -223,6 +236,8 @@ class ObjectDrawer extends Canvas{
       connection_type = "loop";
     } else if (block instanceof WithTypingBlock) {
       connection_type = "withtyping";
+    } else if (block instanceof TryCatchBlock) {
+      connection_type = "trycatch";
     }
 
     return connection_type;

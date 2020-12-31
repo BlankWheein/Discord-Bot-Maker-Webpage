@@ -3,6 +3,7 @@ const ALL_BLOCKS = {
   "DecisionBlock": DecisionBlock,
   "ForLoopBlock": ForLoopBlock,
   "WithTypingBlock": WithTypingBlock,
+  "TryCatchBlock": TryCatchBlock,
   "SendMessageBlock": SendMessageBlock,
   "SetChannelBlock": SetChannelBlock,
   "SetVariableBlock": SetVariableBlock,

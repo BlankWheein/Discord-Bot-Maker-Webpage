@@ -23,48 +23,51 @@
         }
       },
       {
-        "command": "SetChannelBlock",
-        "id": "block_4",
+        "command": "SetCategoryBlock",
+        "id": "block_9",
         "position": [
-          349,
-          78
+          551,
+          420
         ],
         "variables": {
-          "id": "736648548380049541",
+          "id": "ID",
           "print": ""
         }
       },
       {
-        "command": "WithTypingBlock",
-        "id": "block_5",
+        "command": "SetCategoryBlock",
+        "id": "block_10",
         "position": [
-          434,
-          170
-        ],
-        "variables": {}
-      },
-      {
-        "command": "WaitBlock",
-        "id": "block_6",
-        "position": [
-          738,
-          199
+          339,
+          518
         ],
         "variables": {
-          "delay": "10",
+          "id": "ID",
           "print": ""
+        }
+      },
+      {
+        "command": "TryCatchBlock",
+        "id": "block_0",
+        "position": [
+          342,
+          168
+        ],
+        "variables": {
+          "exception": "Exception",
+          "errorvar": "ErrorVar"
         }
       },
       {
         "command": "SendMessageBlock",
-        "id": "block_7",
+        "id": "block_2",
         "position": [
-          479,
-          315
+          96,
+          268
         ],
         "variables": {
-          "message": "i am a slow typer okay...",
-          "channel": "channel",
+          "message": "Message",
+          "channel": "Channel",
           "var": "var",
           "delete_after": null,
           "print": ""
@@ -79,22 +82,22 @@
       },
       {
         "from": "block_1",
-        "to": "block_4",
+        "to": "block_0",
         "label": ""
       },
       {
-        "from": "block_4",
-        "to": "block_5",
-        "label": ""
+        "from": "block_0",
+        "to": "block_9",
+        "label": "try"
       },
       {
-        "from": "block_5",
-        "to": "block_6",
-        "label": "withtyping"
+        "from": "block_0",
+        "to": "block_10",
+        "label": "catch"
       },
       {
-        "from": "block_5",
-        "to": "block_7",
+        "from": "block_0",
+        "to": "block_2",
         "label": "end"
       }
     ]
