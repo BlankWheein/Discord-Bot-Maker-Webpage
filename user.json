@@ -11,57 +11,90 @@
         "variables": {}
       },
       {
-        "command": "ForLoopBlock",
-        "id": "block_2",
+        "command": "SetGuildBlock",
+        "id": "block_1",
         "position": [
-          370,
-          177
+          151,
+          83
         ],
         "variables": {
-          "type": "stop",
-          "list": "List",
-          "stop": "10",
-          "start": "10",
-          "var": "msg"
+          "id": "736249300807450665",
+          "print": ""
         }
       },
       {
-        "command": "PrintBlock",
-        "id": "block_3",
+        "command": "SetChannelBlock",
+        "id": "block_4",
         "position": [
-          639,
-          307
+          349,
+          78
         ],
         "variables": {
-          "message": "{msg} "
+          "id": "736648548380049541",
+          "print": ""
         }
       },
       {
-        "command": "PrintBlock",
-        "id": "block_0",
+        "command": "WithTypingBlock",
+        "id": "block_5",
         "position": [
-          406,
-          416
+          434,
+          170
+        ],
+        "variables": {}
+      },
+      {
+        "command": "WaitBlock",
+        "id": "block_6",
+        "position": [
+          738,
+          199
         ],
         "variables": {
-          "message": "Done"
+          "delay": "10",
+          "print": ""
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "block_7",
+        "position": [
+          479,
+          315
+        ],
+        "variables": {
+          "message": "i am a slow typer okay...",
+          "channel": "channel",
+          "var": "var",
+          "delete_after": null,
+          "print": ""
         }
       }
     ],
     "connections": [
       {
         "from": "EventBlock_0",
-        "to": "block_2",
+        "to": "block_1",
         "label": ""
       },
       {
-        "from": "block_2",
-        "to": "block_3",
-        "label": "loop"
+        "from": "block_1",
+        "to": "block_4",
+        "label": ""
       },
       {
-        "from": "block_2",
-        "to": "block_0",
+        "from": "block_4",
+        "to": "block_5",
+        "label": ""
+      },
+      {
+        "from": "block_5",
+        "to": "block_6",
+        "label": "withtyping"
+      },
+      {
+        "from": "block_5",
+        "to": "block_7",
         "label": "end"
       }
     ]

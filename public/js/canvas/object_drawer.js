@@ -49,6 +49,20 @@ class ObjectDrawer extends Canvas{
           });
         });
       }
+      else if (info.connection.hasType("withtyping")){
+        info.connection.bind("click", function (conn, originalEvent) {
+          let labels = ["withtyping", "end"];
+          let new_label = labels[(labels.indexOf(conn.label) + 1) % labels.length];
+          info.connection.removeOverlay("conn_label");
+          info.connection.addOverlay(["Label", { label: new_label, location: 0.5, id: "conn_label" }]);
+
+          ctx.blocks_objs[info.sourceId].connections.forEach(e => {
+            if (e.target_block.dom.id == info.connection.targetId) {
+              e.connection_type = new_label;
+            }
+          });
+        });
+      }
     });
 
     this.instance.bind("connectionDetached", function (c) {
@@ -207,6 +221,8 @@ class ObjectDrawer extends Canvas{
       connection_type = "decision";
     } else if (block instanceof ForLoopBlock) {
       connection_type = "loop";
+    } else if (block instanceof WithTypingBlock) {
+      connection_type = "withtyping";
     }
 
     return connection_type;

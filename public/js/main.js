@@ -118,6 +118,10 @@ jsPlumb.ready(function () {
     drawer.draw_block(new ForLoopBlock());
   });
 
+  $("#add-with-typing").click(() => {
+    drawer.draw_block(new WithTypingBlock());
+  });
+
 
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);
