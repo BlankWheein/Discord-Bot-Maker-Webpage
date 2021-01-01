@@ -3,10 +3,10 @@
     "commands": [
       {
         "command": "OnReadyBlock",
-        "id": "EventBlock_0",
+        "id": "block_0",
         "position": [
-          -1,
-          17
+          33,
+          14
         ],
         "variables": {}
       },
@@ -14,8 +14,8 @@
         "command": "SetGuildBlock",
         "id": "block_1",
         "position": [
-          151,
-          83
+          195,
+          13
         ],
         "variables": {
           "id": "736249300807450665",
@@ -23,82 +23,139 @@
         }
       },
       {
-        "command": "SetCategoryBlock",
+        "command": "SetChannelBlock",
+        "id": "block_2",
+        "position": [
+          347,
+          13
+        ],
+        "variables": {
+          "id": "736648548380049541",
+          "print": ""
+        }
+      },
+      {
+        "command": "ReadGlobalVariablesBlock",
+        "id": "block_3",
+        "position": [
+          503,
+          11
+        ],
+        "variables": {
+          "print": ""
+        }
+      },
+      {
+        "command": "GetArgumentBlock",
         "id": "block_9",
         "position": [
-          551,
-          420
+          711,
+          12
         ],
         "variables": {
-          "id": "ID",
+          "index": "0",
+          "type": "str",
+          "var": "arg1",
           "print": ""
         }
       },
       {
-        "command": "SetCategoryBlock",
+        "command": "ChangeVariableValueBlock",
         "id": "block_10",
         "position": [
-          339,
-          518
+          896,
+          60
         ],
         "variables": {
-          "id": "ID",
+          "target": "{argval}",
+          "operator": "add",
+          "value": "5",
           "print": ""
         }
       },
       {
-        "command": "TryCatchBlock",
-        "id": "block_0",
+        "command": "WriteGlobalVariableBlock",
+        "id": "block_11",
         "position": [
-          342,
-          168
+          824,
+          216
         ],
         "variables": {
-          "exception": "Exception",
-          "errorvar": "ErrorVar"
+          "key": "{arg1}",
+          "value": "{argval}",
+          "print": ""
         }
       },
       {
         "command": "SendMessageBlock",
-        "id": "block_2",
+        "id": "block_4",
         "position": [
-          96,
-          268
+          875,
+          356
         ],
         "variables": {
-          "message": "Message",
-          "channel": "Channel",
+          "message": "Daily collected! you now have {argval} gold",
+          "channel": "channel",
           "var": "var",
-          "delete_after": null,
+          "delete_after": "0",
+          "print": ""
+        }
+      },
+      {
+        "command": "SetVariableBlock",
+        "id": "block_5",
+        "position": [
+          512,
+          131
+        ],
+        "variables": {
+          "content": "{arg1}",
+          "type": "int",
+          "var": "argval",
           "print": ""
         }
       }
     ],
     "connections": [
       {
-        "from": "EventBlock_0",
+        "from": "block_0",
         "to": "block_1",
         "label": ""
       },
       {
         "from": "block_1",
-        "to": "block_0",
+        "to": "block_2",
         "label": ""
       },
       {
-        "from": "block_0",
+        "from": "block_2",
+        "to": "block_3",
+        "label": ""
+      },
+      {
+        "from": "block_3",
         "to": "block_9",
-        "label": "try"
+        "label": ""
       },
       {
-        "from": "block_0",
+        "from": "block_9",
+        "to": "block_5",
+        "label": ""
+      },
+      {
+        "from": "block_10",
+        "to": "block_11",
+        "label": ""
+      },
+      {
+        "from": "block_11",
+        "to": "block_4",
+        "label": ""
+      },
+      {
+        "from": "block_5",
         "to": "block_10",
-        "label": "catch"
-      },
-      {
-        "from": "block_0",
-        "to": "block_2",
-        "label": "end"
+        "label": ""
       }
     ]
   },

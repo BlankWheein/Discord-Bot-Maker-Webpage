@@ -27,4 +27,7 @@ const ALL_BLOCKS = {
   "RaiseExceptBlock" : RaiseExceptBlock,
   "SetPressenceBlock" : SetPressenceBlock,
   "WaitBlock" : WaitBlock,
+  "ReadGlobalVariablesBlock": ReadGlobalVariablesBlock,
+  "WriteGlobalVariableBlock": WriteGlobalVariableBlock,
+  "ChangeVariableValueBlock": ChangeVariableValueBlock,
 }

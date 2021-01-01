@@ -126,6 +126,18 @@ jsPlumb.ready(function () {
     drawer.draw_block(new TryCatchBlock());
   });
 
+  $("#add-read-global-variables").click(() => {
+    drawer.draw_block(new ReadGlobalVariablesBlock());
+  });
+
+  $("#add-write-global-variable").click(() => {
+    drawer.draw_block(new WriteGlobalVariableBlock());
+  });
+
+  $("#add-change-variable-value").click(() => {
+    drawer.draw_block(new ChangeVariableValueBlock());
+  });
+
 
   $("#generate-code").click(() => {
     const a = new SequenceParser(drawer);
