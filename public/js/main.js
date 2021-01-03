@@ -206,7 +206,7 @@ jsPlumb.ready(function () {
           return;
         }
 
-        final_json[cmd_name] = out;
+        final_json = {...final_json, ...out};
       });
 
       if(final_json != {}){
