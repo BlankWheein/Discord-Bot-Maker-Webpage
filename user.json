@@ -324,39 +324,5 @@
         "label": ""
       }
     ]
-  },
-  "New Command": {
-    "commands": [
-      {
-        "command": "OnReadyBlock",
-        "id": "block_0",
-        "position": [
-          48,
-          85
-        ],
-        "variables": {}
-      },
-      {
-        "command": "SetVariableBlock",
-        "id": "block_2",
-        "position": [
-          190,
-          76
-        ],
-        "variables": {
-          "content": "Content",
-          "type": "Type",
-          "var": "Var",
-          "print": ""
-        }
-      }
-    ],
-    "connections": [
-      {
-        "from": "block_0",
-        "to": "block_2",
-        "label": ""
-      }
-    ]
   }
 }

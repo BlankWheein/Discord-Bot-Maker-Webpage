@@ -67,15 +67,14 @@ jsPlumb.ready(function () {
             $("#json-output").html(`Unknown error in command "${cmd_name}"`);
           }
 
-          final_json = {};
+          final_json = { error: true };
           return;
         }
 
         final_json = {...final_json, ...out};
       });
 
-      if(final_json != {}){
-        console.log(final_json);
+      if(final_json != {} && !("error" in final_json)){
         $("#json-output").html(JSON.stringify(final_json));
       }
     });
