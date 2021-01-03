@@ -25,26 +25,20 @@
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <%- include("subviews/sidebar-menu", {
-            command_names: command_names,
             current_command: typeof current_command == 'undefined' ? "" : current_command,
-            page_type: page_type
           }) %>
         </nav>
 
         <div class="col-md-9 ml-sm-auto col-lg-10">
           <%if(page_type == "commands"){ %>
-            <%- include("subviews/editor-canvas", {
-              block_tabs: block_tabs
-            }) %>
+            <%- include("subviews/editor-canvas") %>
           <% } %>
         </div>
       </div>
     </div>
 
     <%if(page_type == "commands"){ %>
-      <%- include("subviews/blocks-import", {
-        all_blocks_files: all_blocks_files
-      }) %>
+      <%- include("subviews/blocks-import") %>
     <% } %>
   </body>
 </html>

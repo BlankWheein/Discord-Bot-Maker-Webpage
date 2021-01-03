@@ -60,11 +60,11 @@ jsPlumb.ready(function () {
 
         if("error" in out){
           if(out.error == "no-event-block"){
-            $("#json-output").html(`No event block in command "${e}"`);
+            $("#json-output").html(`No event block in command "${cmd_name}"`);
           }else if(out.error == "no-event-block"){
-            $("#json-output").html(`Infinite loop in command "${e}"`);
+            $("#json-output").html(`Infinite loop in command "${cmd_name}"`);
           }else{
-            $("#json-output").html(`Unknown error in command "${e}"`);
+            $("#json-output").html(`Unknown error in command "${cmd_name}"`);
           }
 
           final_json = {};
