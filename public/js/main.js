@@ -18,6 +18,23 @@ jsPlumb.ready(function () {
     });
   });
 
+  $("#delete-command").click(() => {
+    let command_delete_url = window.location.href + "/delete_command";
+
+    $.post(command_delete_url, { }, function (result) {
+      document.location.href = `/`;
+    });
+  });
+
+  $("#add-command").click(() => {
+    console.log("dfuihsdui");
+    let command_name = prompt("New command name:", "New Command");
+
+    if(command_name != null){
+      document.location.href = `/create_command/${command_name}`;
+    }
+  });
+
   $("#add-on-ready").click(() => {
     drawer.draw_block(new OnReadyBlock());
   });

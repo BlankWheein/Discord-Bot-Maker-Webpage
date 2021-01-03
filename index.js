@@ -20,6 +20,35 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/create_command/:command", function (req, res) {
+  const command_name = req.params.command;
+
+  try{
+    fs.readFile("user.json", (err, data) => {
+      if (err) throw err;
+      let commands = JSON.parse(data);
+
+      if(!(command_name in commands)){
+        commands[command_name] = {
+          "commands": [],
+          "connections": []
+        };
+
+        fs.writeFileSync('user.json', JSON.stringify(commands, null, 2));
+      }
+
+      res.redirect(`/commands/${command_name}`);
+    });
+  }catch(e){
+    res.json({
+      result: "error",
+      response: e
+    });
+
+    res.redirect("/");
+  }
+});
+
 app.get("/commands/:command", function (req, res) {
   const command_name = req.params.command;
 
@@ -76,6 +105,29 @@ app.post("/commands/:command/save_command", function (req, res) {
       response: e
     });
   }
+});
+
+app.post("/commands/:command/delete_command", function (req, res) {
+  const command_name = req.params.command;
+
+  try{
+    fs.readFile("user.json", (err, data) => {
+      if (err) throw err;
+      let commands = JSON.parse(data);
+
+      if(command_name in commands){
+        delete commands[command_name];
+        fs.writeFileSync('user.json', JSON.stringify(commands, null, 2));
+      }
+    });
+  }catch(e){
+    res.json({
+      result: "error",
+      response: e
+    });
+  }
+
+  res.redirect("/");
 });
 
 app.listen(3000, function () {

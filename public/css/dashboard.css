@@ -121,3 +121,7 @@ body {
     font-size: 3.5rem;
   }
 }
+
+.add-command-button{
+  cursor: pointer;
+}
