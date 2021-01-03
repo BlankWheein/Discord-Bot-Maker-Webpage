@@ -20,7 +20,59 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/create_command/:command", function (req, res) {
+app.get("/commands/get-all-instructions", function (req, res) {
+  try{
+    fs.readFile("user.json", (err, data) => {
+      if (err) throw err;
+      let commands = JSON.parse(data);
+      res.json({
+        result: "success",
+        response: commands
+      });
+    });
+  }catch(e){
+    res.json({
+      result: "error",
+      response: e
+    });
+  }
+});
+
+app.get("/commands/:command", function (req, res) {
+  const command_name = req.params.command;
+
+  fs.readFile("user.json", (err, data) => {
+    if (err) throw err;
+    let commands = JSON.parse(data);
+    res.render("dashboard", {
+      command_names: Object.keys(commands),
+      current_command: command_name,
+      page_type: "commands"
+    });
+  });
+});
+
+app.get("/commands/:command/canvas-instructions", function (req, res) {
+  const command_name = req.params.command;
+
+  try{
+    fs.readFile("user.json", (err, data) => {
+      if (err) throw err;
+      let commands = JSON.parse(data);
+      res.json({
+        result: "success",
+        response: commands[command_name]
+      });
+    });
+  }catch(e){
+    res.json({
+      result: "error",
+      response: e
+    });
+  }
+});
+
+app.get("/commands/:command/create", function (req, res) {
   const command_name = req.params.command;
 
   try{
@@ -49,41 +101,7 @@ app.get("/create_command/:command", function (req, res) {
   }
 });
 
-app.get("/commands/:command", function (req, res) {
-  const command_name = req.params.command;
-
-  fs.readFile("user.json", (err, data) => {
-    if (err) throw err;
-    let commands = JSON.parse(data);
-    res.render("dashboard", {
-      command_names: Object.keys(commands),
-      current_command: command_name,
-      page_type: "commands"
-    });
-  });
-});
-
-app.get("/commands/:command/canvas_instructions", function (req, res) {
-  const command_name = req.params.command;
-
-  try{
-    fs.readFile("user.json", (err, data) => {
-      if (err) throw err;
-      let commands = JSON.parse(data);
-      res.json({
-        result: "success",
-        response: commands[command_name]
-      });
-    });
-  }catch(e){
-    res.json({
-      result: "error",
-      response: e
-    });
-  }
-});
-
-app.post("/commands/:command/save_command", function (req, res) {
+app.post("/commands/:command/save", function (req, res) {
   const command_name = req.params.command;
   const command_json = JSON.parse(req.body.command_json);
 
@@ -107,7 +125,7 @@ app.post("/commands/:command/save_command", function (req, res) {
   }
 });
 
-app.post("/commands/:command/delete_command", function (req, res) {
+app.post("/commands/:command/delete", function (req, res) {
   const command_name = req.params.command;
 
   try{

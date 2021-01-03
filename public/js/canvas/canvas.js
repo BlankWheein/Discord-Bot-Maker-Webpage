@@ -14,7 +14,7 @@ class Canvas{
           foldback: 0.8
         }]
       ],
-      Container: "canvas"
+      Container: this.canvas_id
     });
 
     this.instance.registerConnectionTypes({

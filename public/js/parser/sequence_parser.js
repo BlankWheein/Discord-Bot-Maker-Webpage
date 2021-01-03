@@ -126,16 +126,13 @@ class SequenceParser{
       
       if (head){
         let json = create_json(head, {});
-        $("#json-output").html(JSON.stringify(json));
         return json;
       }else{
-        $("#json-output").html("No event block");
-        return {};
+        return { error: "no-event-block" };
       }
     } catch (e){
       console.log(e);
-      $("#json-output").html("Infinite loop");
-      return {};
+      return { error: "infinite-loop" };
     }
   }
 }
