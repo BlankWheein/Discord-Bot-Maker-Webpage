@@ -1,6 +1,10 @@
 class OnReadyBlock extends EventBlock {
   constructor(params) {
     super(getParam(params, "position", [0, 0]));
+    this.params = params;
+    this.json_compiler = {
+      on_ready: {}
+    }
 
     this.update_text();
   }
@@ -10,18 +14,8 @@ class OnReadyBlock extends EventBlock {
   }
 
   compile_json(actions) {
-    return {
-      on_ready: {
-        actions: actions
-      }
-    };
-  }
-
-  get_form_info() {
-    return [];
-  }
-
-  get_custom_variables() {
-    return [];
+    var key = Object.keys(this.json_compiler)[0];
+    this.json_compiler[key]["actions"] = actions;
+    return this.json_compiler;
   }
 }

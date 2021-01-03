@@ -67,7 +67,7 @@
           60
         ],
         "variables": {
-          "target": "{argval}",
+          "target": "argval",
           "operator": "add",
           "value": "5",
           "print": ""
@@ -105,8 +105,8 @@
         "command": "SetVariableBlock",
         "id": "block_5",
         "position": [
-          512,
-          131
+          480,
+          162
         ],
         "variables": {
           "content": "{arg1}",
@@ -162,20 +162,11 @@
   "if-command": {
     "commands": [
       {
-        "command": "OnReadyBlock",
-        "id": "block_0",
-        "position": [
-          8,
-          100
-        ],
-        "variables": {}
-      },
-      {
         "command": "SetGuildBlock",
         "id": "block_1",
         "position": [
-          166,
-          99
+          195,
+          13
         ],
         "variables": {
           "id": "736249300807450665",
@@ -186,8 +177,8 @@
         "command": "SetChannelBlock",
         "id": "block_2",
         "position": [
-          355,
-          98
+          347,
+          13
         ],
         "variables": {
           "id": "736648548380049541",
@@ -195,81 +186,82 @@
         }
       },
       {
-        "command": "AddRolesBlock",
-        "id": "block_5",
-        "position": [
-          873,
-          221
-        ],
-        "variables": {
-          "target": "{user}",
-          "roles": "{role}",
-          "reason": "You are god",
-          "print": ""
-        }
-      },
-      {
-        "command": "WaitBlock",
-        "id": "block_6",
-        "position": [
-          871,
-          343
-        ],
-        "variables": {
-          "delay": "11",
-          "print": ""
-        }
-      },
-      {
-        "command": "RemoveRolesBlock",
+        "command": "AddMemberVarBlock",
         "id": "block_7",
         "position": [
-          784,
-          488
+          544,
+          34
         ],
         "variables": {
-          "target": "{user}",
-          "roles": "{role}",
-          "reason": "Fuck you",
+          "key": "money",
+          "value": "0",
           "print": ""
         }
       },
       {
-        "command": "GetMemberBlock",
-        "id": "block_4",
-        "position": [
-          564,
-          107
-        ],
-        "variables": {
-          "type": "name",
-          "value": "pll",
-          "var": "user",
-          "print": ""
-        }
-      },
-      {
-        "command": "GetRoleBlock",
+        "command": "ReadMemberFileBlock",
         "id": "block_3",
         "position": [
-          735,
-          89
+          765,
+          41
         ],
         "variables": {
-          "type": "id",
-          "name": "Name",
-          "id": "793507089577803797",
-          "var": "role",
           "print": ""
+        }
+      },
+      {
+        "command": "ChangeVariableValueBlock",
+        "id": "block_5",
+        "position": [
+          862,
+          158
+        ],
+        "variables": {
+          "target": "money",
+          "operator": "add",
+          "value": "5",
+          "print": ""
+        }
+      },
+      {
+        "command": "WriteMemberFileBlock",
+        "id": "block_4",
+        "position": [
+          857,
+          307
+        ],
+        "variables": {
+          "print": ""
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "block_6",
+        "position": [
+          874,
+          447
+        ],
+        "variables": {
+          "message": "{author.mention}, You now have {money} monetos! :)",
+          "channel": "channel",
+          "var": "var",
+          "delete_after": null,
+          "print": ""
+        }
+      },
+      {
+        "command": "CommandBlock",
+        "id": "block_8",
+        "position": [
+          5,
+          112
+        ],
+        "variables": {
+          "name": "daily"
         }
       }
     ],
     "connections": [
-      {
-        "from": "block_0",
-        "to": "block_1",
-        "label": ""
-      },
       {
         "from": "block_1",
         "to": "block_2",
@@ -277,27 +269,32 @@
       },
       {
         "from": "block_2",
-        "to": "block_4",
-        "label": ""
-      },
-      {
-        "from": "block_5",
-        "to": "block_6",
-        "label": ""
-      },
-      {
-        "from": "block_6",
         "to": "block_7",
         "label": ""
       },
       {
-        "from": "block_4",
+        "from": "block_7",
         "to": "block_3",
         "label": ""
       },
       {
         "from": "block_3",
         "to": "block_5",
+        "label": ""
+      },
+      {
+        "from": "block_5",
+        "to": "block_4",
+        "label": ""
+      },
+      {
+        "from": "block_4",
+        "to": "block_6",
+        "label": ""
+      },
+      {
+        "from": "block_8",
+        "to": "block_1",
         "label": ""
       }
     ]

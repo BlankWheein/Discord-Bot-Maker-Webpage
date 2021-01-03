@@ -22,6 +22,10 @@ jsPlumb.ready(function () {
     drawer.draw_block(new OnReadyBlock());
   });
 
+  $("#add-command-block").click(() => {
+    drawer.draw_block(new CommandBlock());
+  });
+
   $("#add-send-message").click(() => {
     drawer.draw_block(new SendMessageBlock());
   });
@@ -137,6 +141,22 @@ jsPlumb.ready(function () {
   $("#add-change-variable-value").click(() => {
     drawer.draw_block(new ChangeVariableValueBlock());
   });
+
+
+
+
+  $("#add-add-member-var").click(() => {
+    drawer.draw_block(new AddMemberVarBlock());
+  });
+
+  $("#add-read-member-file").click(() => {
+    drawer.draw_block(new ReadMemberFileBlock());
+  });
+
+  $("#add-write-member-file").click(() => {
+    drawer.draw_block(new WriteMemberFileBlock());
+  });
+
 
 
   $("#generate-code").click(() => {

@@ -1,5 +1,6 @@
 const ALL_BLOCKS = {
   "OnReadyBlock": OnReadyBlock,
+  "CommandBlock": CommandBlock,
   "DecisionBlock": DecisionBlock,
   "ForLoopBlock": ForLoopBlock,
   "WithTypingBlock": WithTypingBlock,
@@ -30,4 +31,7 @@ const ALL_BLOCKS = {
   "ReadGlobalVariablesBlock": ReadGlobalVariablesBlock,
   "WriteGlobalVariableBlock": WriteGlobalVariableBlock,
   "ChangeVariableValueBlock": ChangeVariableValueBlock,
+  "WriteMemberFileBlock": WriteMemberFileBlock,
+  "ReadMemberFileBlock": ReadMemberFileBlock,
+  "AddMemberVarBlock": AddMemberVarBlock
 }
