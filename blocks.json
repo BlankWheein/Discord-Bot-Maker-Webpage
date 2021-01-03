@@ -30,7 +30,8 @@
       { "name": "Change Variable Value", "class": "ChangeVariableValueBlock" },
       { "name": "Add Member Variable", "class": "AddMemberVarBlock" },
       { "name": "Read Member File", "class": "ReadMemberFileBlock" },
-      { "name": "Write Member File", "class": "WriteMemberFileBlock" }
+      { "name": "Write Member File", "class": "WriteMemberFileBlock" },
+      { "name": "Random Number", "class": "RandomNumberBlock"}
     ]
   },
   {

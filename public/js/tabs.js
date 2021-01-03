@@ -10,7 +10,7 @@ $(document).ready(function () {
       $(this).removeClass('inactive');
 
       $('.container').hide();
-      $('#'+ t + '-content').fadeIn('slow');
+      $('#'+ t + '-content').fadeIn();
     }
   });
 });
