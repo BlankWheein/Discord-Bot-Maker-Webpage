@@ -27,6 +27,8 @@
   <script src="<%= path %>"></script>
 <% }); %>
 
+
+
 <script src="../js/tabs.js"></script>
 
 <script src="../js/canvas/canvas.js"></script>
@@ -36,6 +38,16 @@
 <script src="../js/parser/command_loader.js"></script>
 <script src="../js/parser/command_saver.js"></script>
 
-<script src="../js/blocks/all_blocks.js"></script>
+<!-- <script src="../js/blocks/all_blocks.js"></script> -->
+<!-- Creates the ALL_BLOCKS variable -->
+<%- "<script>" %>
+  <%- "const ALL_BLOCKS = {" %>
+  <% block_tabs.forEach((tab, i) => { %>
+      <% tab.blocks.forEach(block => { %>
+        <%- `"${block.class}": ${block.class},` %>
+      <% }); %>
+  <% }); %>
+  <%- "}" %>
+  <%- "</script>" %>
 
 <script src="../js/main.js"></script>
