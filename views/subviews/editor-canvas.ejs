@@ -13,7 +13,24 @@
   </div>
 
   <br />
-  <input type="button" class="btn btn-outline-dark" id="add-on-ready" value="Add 'On Ready'">
+
+  <ul id="tabs">
+    <% block_tabs.forEach((tab, i) => { %>
+      <li><a id="tab-id-<%= i %>">
+        <%= tab.name %>
+      </a></li>
+    <% }); %>
+  </ul>
+  
+  <% block_tabs.forEach((tab, i) => { %>
+    <div class="container" id="tab-id-<%= i %>-content">
+      <% tab.blocks.forEach(block => { %>
+        <input type="button" class="btn btn-outline-dark" id="<%= block.id %>" value="Add '<%= block.name %>'">
+      <% }); %>
+    </div>
+  <% }); %>
+
+  <!-- <input type="button" class="btn btn-outline-dark" id="add-on-ready" value="Add 'On Ready'">
   <input type="button" class="btn btn-outline-dark" id="add-command-block" value="Add 'Command'">
   <input type="button" class="btn btn-outline-dark" id="add-cooldown" value="Add 'Cooldown'">
   <input type="button" class="btn btn-outline-dark" id="add-if-statement" value="Add 'If Statement'">
@@ -60,15 +77,7 @@
 
   <input type="button" class="btn btn-outline-dark" id="add-read-member-file" value="Add 'Read Member File'">
   <input type="button" class="btn btn-outline-dark" id="add-write-member-file" value="Add 'Write Member File'">
-  <input type="button" class="btn btn-outline-dark" id="add-add-member-var" value="Add 'Add Member Var'">
-
-
-
-
-
-
-
-
+  <input type="button" class="btn btn-outline-dark" id="add-add-member-var" value="Add 'Add Member Var'"> -->
 
   <br /><br />
   <input type="button" class="btn btn-success" id="generate-code" value="Parse into Json">

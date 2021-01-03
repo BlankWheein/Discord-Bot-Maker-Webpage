@@ -9,6 +9,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+let block_tabs = [
+  {
+    name: "Tab 0 Name",
+    blocks: [
+      { name: "On Ready", id: "add-on-ready" },
+      { name: "Cooldown", id: "add-cooldown" }
+    ]
+  },
+  {
+    name: "Tab 1 Name",
+    blocks: [
+      { name: "Set Var", id: "add-set-var" },
+      { name: "Set Channel", id: "add-set-channel" }
+    ]
+  }
+]
+
 app.get("/", function (req, res) {
   fs.readFile("user.json", (err, data) => {
     if (err) throw err;
@@ -45,6 +62,7 @@ app.get("/commands/:command", function (req, res) {
     if (err) throw err;
     let commands = JSON.parse(data);
     res.render("dashboard", {
+      block_tabs: block_tabs,
       command_names: Object.keys(commands),
       current_command: command_name,
       page_type: "commands"

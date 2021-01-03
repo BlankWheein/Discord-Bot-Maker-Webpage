@@ -33,7 +33,9 @@
 
         <div class="col-md-9 ml-sm-auto col-lg-10">
           <%if(page_type == "commands"){ %>
-            <%- include("subviews/editor-canvas") %>
+            <%- include("subviews/editor-canvas", {
+              block_tabs: block_tabs
+            }) %>
           <% } %>
         </div>
       </div>
