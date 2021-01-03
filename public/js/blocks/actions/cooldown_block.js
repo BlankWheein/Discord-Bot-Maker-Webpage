@@ -8,6 +8,7 @@ class CooldownBlock extends ActionBlock {
     }
 
     this.add_field("Cooldown", "text", "cooldown");
+    this.add_field("BucketType", ["channel", "guild", "member"], "buckettype")
     this.add_field("Error", "text", "error");
 
     this.add_print();
@@ -15,7 +16,7 @@ class CooldownBlock extends ActionBlock {
   }
 
   update_text() {
-    this.update_dom_text("Cooldown for: " + this.cooldown + " seconds");
+    this.update_dom_text(this.buckettype + " cooldown for: " + this.cooldown + " seconds");
   }
 
 }

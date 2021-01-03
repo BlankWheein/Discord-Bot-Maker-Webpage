@@ -271,11 +271,12 @@
         "command": "CooldownBlock",
         "id": "block_1",
         "position": [
-          423,
-          23
+          388,
+          26
         ],
         "variables": {
           "cooldown": "30",
+          "buckettype": "member",
           "error": "something",
           "print": ""
         }
