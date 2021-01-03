@@ -33,5 +33,6 @@ const ALL_BLOCKS = {
   "ChangeVariableValueBlock": ChangeVariableValueBlock,
   "WriteMemberFileBlock": WriteMemberFileBlock,
   "ReadMemberFileBlock": ReadMemberFileBlock,
-  "AddMemberVarBlock": AddMemberVarBlock
+  "AddMemberVarBlock": AddMemberVarBlock,
+  "CooldownBlock": CooldownBlock,
 }

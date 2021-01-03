@@ -2,159 +2,163 @@
   "test": {
     "commands": [
       {
-        "command": "OnReadyBlock",
-        "id": "block_0",
-        "position": [
-          33,
-          14
-        ],
-        "variables": {}
-      },
-      {
-        "command": "SetGuildBlock",
-        "id": "block_1",
-        "position": [
-          195,
-          13
-        ],
-        "variables": {
-          "id": "736249300807450665",
-          "print": ""
-        }
-      },
-      {
-        "command": "SetChannelBlock",
+        "command": "AddMemberVarBlock",
         "id": "block_2",
         "position": [
-          347,
-          13
+          237,
+          27
         ],
         "variables": {
-          "id": "736648548380049541",
+          "key": "money",
+          "value": "0",
           "print": ""
         }
       },
       {
-        "command": "ReadGlobalVariablesBlock",
+        "command": "ReadMemberFileBlock",
+        "id": "block_4",
+        "position": [
+          464,
+          17
+        ],
+        "variables": {
+          "print": ""
+        }
+      },
+      {
+        "command": "DecisionBlock",
+        "id": "block_1",
+        "position": [
+          740,
+          20
+        ],
+        "variables": {
+          "var1": "{money}",
+          "var2": "50",
+          "operator": ">=",
+          "print": ""
+        }
+      },
+      {
+        "command": "AddRolesBlock",
         "id": "block_3",
         "position": [
-          503,
-          11
+          1016,
+          37
         ],
         "variables": {
-          "print": ""
-        }
-      },
-      {
-        "command": "GetArgumentBlock",
-        "id": "block_9",
-        "position": [
-          711,
-          12
-        ],
-        "variables": {
-          "index": "0",
-          "type": "str",
-          "var": "arg1",
+          "target": "author",
+          "roles": "793507089577803797",
+          "reason": "Paid",
           "print": ""
         }
       },
       {
         "command": "ChangeVariableValueBlock",
-        "id": "block_10",
+        "id": "block_5",
         "position": [
-          896,
-          60
+          991,
+          141
         ],
         "variables": {
-          "target": "argval",
-          "operator": "add",
-          "value": "5",
+          "target": "money",
+          "operator": "subtract",
+          "value": "50",
           "print": ""
         }
       },
       {
-        "command": "WriteGlobalVariableBlock",
-        "id": "block_11",
+        "command": "WriteMemberFileBlock",
+        "id": "block_6",
         "position": [
-          824,
-          216
+          1008,
+          262
         ],
         "variables": {
-          "key": "{arg1}",
-          "value": "{argval}",
           "print": ""
         }
       },
       {
         "command": "SendMessageBlock",
-        "id": "block_4",
+        "id": "block_7",
         "position": [
-          875,
-          356
+          958,
+          396
         ],
         "variables": {
-          "message": "Daily collected! you now have {argval} gold",
+          "message": "{author.mention} paid for a spicy role! new balance is {money}",
           "channel": "channel",
           "var": "var",
-          "delete_after": "0",
+          "delete_after": null,
           "print": ""
         }
       },
       {
-        "command": "SetVariableBlock",
-        "id": "block_5",
+        "command": "SendMessageBlock",
+        "id": "block_8",
         "position": [
-          480,
-          162
+          507,
+          219
         ],
         "variables": {
-          "content": "{arg1}",
-          "type": "int",
-          "var": "argval",
+          "message": "{author.mention}, You need atleast 50 monetos to get this role...\\nYou have {money}",
+          "channel": "Channel",
+          "var": "var",
+          "delete_after": null,
           "print": ""
+        }
+      },
+      {
+        "command": "CommandBlock",
+        "id": "block_9",
+        "position": [
+          0,
+          0
+        ],
+        "variables": {
+          "name": "role"
         }
       }
     ],
     "connections": [
       {
-        "from": "block_0",
+        "from": "block_2",
+        "to": "block_4",
+        "label": ""
+      },
+      {
+        "from": "block_4",
         "to": "block_1",
         "label": ""
       },
       {
         "from": "block_1",
-        "to": "block_2",
-        "label": ""
+        "to": "block_3",
+        "label": "true"
       },
       {
-        "from": "block_2",
-        "to": "block_3",
-        "label": ""
+        "from": "block_1",
+        "to": "block_8",
+        "label": "false"
       },
       {
         "from": "block_3",
-        "to": "block_9",
-        "label": ""
-      },
-      {
-        "from": "block_9",
         "to": "block_5",
         "label": ""
       },
       {
-        "from": "block_10",
-        "to": "block_11",
-        "label": ""
-      },
-      {
-        "from": "block_11",
-        "to": "block_4",
-        "label": ""
-      },
-      {
         "from": "block_5",
-        "to": "block_10",
+        "to": "block_6",
+        "label": ""
+      },
+      {
+        "from": "block_6",
+        "to": "block_7",
+        "label": ""
+      },
+      {
+        "from": "block_9",
+        "to": "block_2",
         "label": ""
       }
     ]
@@ -162,35 +166,11 @@
   "if-command": {
     "commands": [
       {
-        "command": "SetGuildBlock",
-        "id": "block_1",
-        "position": [
-          195,
-          13
-        ],
-        "variables": {
-          "id": "736249300807450665",
-          "print": ""
-        }
-      },
-      {
-        "command": "SetChannelBlock",
-        "id": "block_2",
-        "position": [
-          347,
-          13
-        ],
-        "variables": {
-          "id": "736648548380049541",
-          "print": ""
-        }
-      },
-      {
         "command": "AddMemberVarBlock",
         "id": "block_7",
         "position": [
-          544,
-          34
+          648,
+          38
         ],
         "variables": {
           "key": "money",
@@ -202,8 +182,8 @@
         "command": "ReadMemberFileBlock",
         "id": "block_3",
         "position": [
-          765,
-          41
+          875,
+          28
         ],
         "variables": {
           "print": ""
@@ -259,19 +239,50 @@
         "variables": {
           "name": "daily"
         }
+      },
+      {
+        "command": "TryCatchBlock",
+        "id": "block_0",
+        "position": [
+          220,
+          38
+        ],
+        "variables": {
+          "exception": "Exception",
+          "errorvar": "ErrorVar"
+        }
+      },
+      {
+        "command": "SendMessageBlock",
+        "id": "block_9",
+        "position": [
+          404,
+          227
+        ],
+        "variables": {
+          "message": "{author.mention}, Please wait {something} seconds before using this command",
+          "channel": "channel",
+          "var": "var",
+          "delete_after": null,
+          "print": ""
+        }
+      },
+      {
+        "command": "CooldownBlock",
+        "id": "block_1",
+        "position": [
+          388,
+          26
+        ],
+        "variables": {
+          "cooldown": "30",
+          "buckettype": "member",
+          "error": "something",
+          "print": ""
+        }
       }
     ],
     "connections": [
-      {
-        "from": "block_1",
-        "to": "block_2",
-        "label": ""
-      },
-      {
-        "from": "block_2",
-        "to": "block_7",
-        "label": ""
-      },
       {
         "from": "block_7",
         "to": "block_3",
@@ -294,7 +305,22 @@
       },
       {
         "from": "block_8",
+        "to": "block_0",
+        "label": ""
+      },
+      {
+        "from": "block_0",
+        "to": "block_9",
+        "label": "catch"
+      },
+      {
+        "from": "block_0",
         "to": "block_1",
+        "label": "try"
+      },
+      {
+        "from": "block_1",
+        "to": "block_7",
         "label": ""
       }
     ]

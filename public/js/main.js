@@ -54,6 +54,10 @@ jsPlumb.ready(function () {
   $("#add-set-var").click(() => {
     drawer.draw_block(new SetVariableBlock());
   });
+
+  $("#add-cooldown").click(() => {
+    drawer.draw_block(new CooldownBlock());
+  });
   
   $("#add-set-channel").click(() => {
     drawer.draw_block(new SetChannelBlock());
