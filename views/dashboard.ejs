@@ -42,7 +42,9 @@
     </div>
 
     <%if(page_type == "commands"){ %>
-      <%- include("subviews/blocks-import") %>
+      <%- include("subviews/blocks-import", {
+        all_blocks_files: all_blocks_files
+      }) %>
     <% } %>
   </body>
 </html>

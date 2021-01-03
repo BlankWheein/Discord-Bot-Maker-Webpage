@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Event Blocks",
+    "blocks": [
+      { "name": "On Ready", "class": "OnReadyBlock" },
+      { "name": "On Command", "class": "OnCommandBlock" }
+    ]
+  },
+  {
+    "name": "Structure",
+    "blocks": [
+      { "name": "If Statement", "class": "DecisionBlock" },
+      { "name": "For Loop", "class": "ForLoopBlock" },
+      { "name": "With Typing", "class": "WithTypingBlock" },
+      { "name": "Try Catch", "class": "TryCatchBlock" },
+      { "name": "Exit Command", "class": "ExitCommand" },
+      { "name": "Raise Exception", "class": "RaiseExceptBlock" },
+      { "name": "Wait", "class": "WaitBlock" }
+    ]
+  },
+  {
+    "name": "Variable",
+    "blocks": [
+      { "name": "Set Variable", "class": "SetVariableBlock" },
+      { "name": "Create List", "class": "CreateListBlock" },
+      { "name": "Append to List", "class": "AppendToListBlock" },
+      { "name": "Pop from List", "class": "PopFromListBlock" },
+      { "name": "Read Global Variables", "class": "ReadGlobalVariablesBlock" },
+      { "name": "Write Global Variables", "class": "WriteGlobalVariableBlock" },
+      { "name": "Change Variable Value", "class": "ChangeVariableValueBlock" },
+      { "name": "Add Member Variable", "class": "AddMemberVarBlock" },
+      { "name": "Read Member File", "class": "ReadMemberFileBlock" },
+      { "name": "Write Member File", "class": "WriteMemberFileBlock" }
+    ]
+  },
+  {
+    "name": "Discord API",
+    "blocks": [
+      { "name": "Set Channel", "class": "SetChannelBlock" },
+      { "name": "Set Category", "class": "SetCategoryBlock" },
+      { "name": "Get Member", "class": "GetMemberBlock" },
+      { "name": "Get Role", "class": "GetRoleBlock" },
+      { "name": "Add Roles", "class": "AddRolesBlock" },
+      { "name": "Remove Roles", "class": "RemoveRolesBlock" }
+    ]
+  },
+  {
+    "name": "Discord Actions",
+    "blocks": [
+      { "name": "SendMessageBlock", "class": "SendMessageBlock" },
+      { "name": "Pin Message", "class": "PinMessageBlock" },
+      { "name": "Unpin Message", "class": "UnpinMessageBlock" },
+      { "name": "Get Argument", "class": "GetArgumentBlock" },
+      { "name": "Purge", "class": "PurgeBlock" },
+      { "name": "Cooldown", "class": "CooldownBlock" }
+    ]
+  },
+  {
+    "name": "Dev",
+    "blocks": [
+      { "name": "Print", "class": "PrintBlock" },
+      { "name": "Get Guild", "class": "GetGuild" },
+      { "name": "Set Guild", "class": "SetGuildBlock" },
+      { "name": "Set Pressence", "class": "SetPressenceBlock" }
+    ]
+  }
+]

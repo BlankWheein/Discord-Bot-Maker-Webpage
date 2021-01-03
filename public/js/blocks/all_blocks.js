@@ -1,6 +1,6 @@
 const ALL_BLOCKS = {
   "OnReadyBlock": OnReadyBlock,
-  "CommandBlock": CommandBlock,
+  "OnCommandBlock": OnCommandBlock,
   "DecisionBlock": DecisionBlock,
   "ForLoopBlock": ForLoopBlock,
   "WithTypingBlock": WithTypingBlock,

@@ -1,4 +1,4 @@
-class CommandBlock extends EventBlock {
+class OnCommandBlock extends EventBlock {
   constructor(params) {
     super(getParam(params, "position", [0, 0]));
     this.params = params;
@@ -10,7 +10,7 @@ class CommandBlock extends EventBlock {
   }
 
   update_text() {
-    this.update_dom_text("Command: " + this.name);
+    this.update_dom_text("On Command: " + this.name);
   }
 
   compile_json(actions) {

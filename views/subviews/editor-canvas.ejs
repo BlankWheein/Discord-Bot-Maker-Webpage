@@ -14,6 +14,7 @@
 
   <br />
 
+  <!-- Creating the tabs -->
   <ul id="tabs">
     <% block_tabs.forEach((tab, i) => { %>
       <li><a id="tab-id-<%= i %>">
@@ -22,62 +23,28 @@
     <% }); %>
   </ul>
   
+  <!-- Creating the buttons -->
+  <% let command_count = 0; %>
   <% block_tabs.forEach((tab, i) => { %>
     <div class="container" id="tab-id-<%= i %>-content">
       <% tab.blocks.forEach(block => { %>
-        <input type="button" class="btn btn-outline-dark" id="<%= block.id %>" value="Add '<%= block.name %>'">
+        <input type="button" class="btn btn-outline-dark" id="command-<%= command_count %>-add" value="Add '<%= block.name %>'">
+        <% command_count++; %>
       <% }); %>
     </div>
   <% }); %>
 
-  <!-- <input type="button" class="btn btn-outline-dark" id="add-on-ready" value="Add 'On Ready'">
-  <input type="button" class="btn btn-outline-dark" id="add-command-block" value="Add 'Command'">
-  <input type="button" class="btn btn-outline-dark" id="add-cooldown" value="Add 'Cooldown'">
-  <input type="button" class="btn btn-outline-dark" id="add-if-statement" value="Add 'If Statement'">
-
-  <input type="button" class="btn btn-outline-dark" id="add-set-var" value="Add 'Set Var'">
-  <input type="button" class="btn btn-outline-dark" id="add-set-channel" value="Add 'Set Channel'">
-  <input type="button" class="btn btn-outline-dark" id="add-set-guild" value="Add 'Set Guild'">
-  <input type="button" class="btn btn-outline-dark" id="add-set-category" value="Add 'Set Category'">
-
-
-  <input type="button" class="btn btn-outline-dark" id="add-get-guild" value="Add 'Get Guild'">
-  <input type="button" class="btn btn-outline-dark" id="add-get-argument" value="Add 'Get Argument'">
-  <input type="button" class="btn btn-outline-dark" id="add-get-member" value="Add 'Get Member'">
-  <input type="button" class="btn btn-outline-dark" id="add-get-role" value="Add 'Get Role'">
-
-
-  <input type="button" class="btn btn-outline-dark" id="add-send-message" value="Add 'Send Message'">
-  <input type="button" class="btn btn-outline-dark" id="add-pin-message" value="Add 'Pin Message'">
-  <input type="button" class="btn btn-outline-dark" id="add-unpin-message" value="Add 'Unpin Message'">
-  <input type="button" class="btn btn-outline-dark" id="add-purge" value="Add 'Purge'">
-
-
-  <input type="button" class="btn btn-outline-dark" id="add-exit-command" value="Add 'Exit Command'">
-  <input type="button" class="btn btn-outline-dark" id="add-print" value="Add 'Print'">
-  <input type="button" class="btn btn-outline-dark" id="add-raise-except" value="Add 'Raise Exception'">
-  <input type="button" class="btn btn-outline-dark" id="add-wait" value="Add 'Wait'">
-  <input type="button" class="btn btn-outline-dark" id="add-set-pressence" value="Add 'Set Pressence'">
-
-
-  <input type="button" class="btn btn-outline-dark" id="add-add-roles" value="Add 'Add Roles'">
-  <input type="button" class="btn btn-outline-dark" id="add-remove-roles" value="Add 'Remove Roles'">
-
-
-  <input type="button" class="btn btn-outline-dark" id="add-append-to-list" value="Add 'Append To List'">
-  <input type="button" class="btn btn-outline-dark" id="add-create-list" value="Add 'Create List'">
-  <input type="button" class="btn btn-outline-dark" id="add-pop-from-list" value="Add 'Pop From List'">
-
-  <input type="button" class="btn btn-outline-dark" id="add-for-loop" value="Add 'For Loop'">
-  <input type="button" class="btn btn-outline-dark" id="add-with-typing" value="Add 'With Typing'">
-  <input type="button" class="btn btn-outline-dark" id="add-try-catch" value="Add 'Try Catch'">
-  <input type="button" class="btn btn-outline-dark" id="add-read-global-variables" value="Add 'Read Global Variables'">
-  <input type="button" class="btn btn-outline-dark" id="add-write-global-variable" value="Add 'Write Global Variable'">
-  <input type="button" class="btn btn-outline-dark" id="add-change-variable-value" value="Add 'Change Variable Value'">
-
-  <input type="button" class="btn btn-outline-dark" id="add-read-member-file" value="Add 'Read Member File'">
-  <input type="button" class="btn btn-outline-dark" id="add-write-member-file" value="Add 'Write Member File'">
-  <input type="button" class="btn btn-outline-dark" id="add-add-member-var" value="Add 'Add Member Var'"> -->
+  <!-- Creating the buttons -->
+  <% let script_count = 0; %>
+  <%- "<script>function click_callbacks(){" %>
+  <% block_tabs.forEach((tab, i) => { %>
+      <% tab.blocks.forEach(block => { %>
+        <%- `$("#command-${script_count}-add").click(() => { drawer.draw_block(new ${block.class}()); });` %>
+        <% script_count++; %>
+      <% }); %>
+  <% }); %>
+  <%- "} function defer(f){if(window.jQuery){f();console.log('good');}else{console.log('bad');setTimeout(function(){defer(f)},50);}}defer(click_callbacks);</script>" %>
+  
 
   <br /><br />
   <input type="button" class="btn btn-success" id="generate-code" value="Parse into Json">
