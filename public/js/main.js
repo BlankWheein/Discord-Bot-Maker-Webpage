@@ -178,6 +178,15 @@ jsPlumb.ready(function () {
     drawer.draw_block(new WriteMemberFileBlock());
   });
 
+
+  $("#copy-code").click(() => {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($("#json-output").text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  });
+
   $("#generate-code").click(() => {
     let all_instructions_url = "/commands/get-all-instructions";
     let final_json = {};
