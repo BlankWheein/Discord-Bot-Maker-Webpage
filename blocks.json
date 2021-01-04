@@ -15,7 +15,8 @@
       { "name": "Try Catch", "class": "TryCatchBlock" },
       { "name": "Exit Command", "class": "ExitCommand" },
       { "name": "Raise Exception", "class": "RaiseExceptBlock" },
-      { "name": "Wait", "class": "WaitBlock" }
+      { "name": "Wait", "class": "WaitBlock" },
+      { "name": "IfnDef", "class": "IfnDefBlock"}
     ]
   },
   {

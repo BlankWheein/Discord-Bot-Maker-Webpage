@@ -2,23 +2,10 @@
   "test": {
     "commands": [
       {
-        "command": "AddMemberVarBlock",
-        "id": "block_2",
-        "position": [
-          237,
-          27
-        ],
-        "variables": {
-          "key": "money",
-          "value": "0",
-          "print": ""
-        }
-      },
-      {
         "command": "ReadMemberFileBlock",
         "id": "block_4",
         "position": [
-          464,
+          250,
           17
         ],
         "variables": {
@@ -102,7 +89,7 @@
         ],
         "variables": {
           "message": "{author.mention}, You need atleast 50 monetos to get this role...\\nYou have {money}",
-          "channel": "Channel",
+          "channel": "channel",
           "var": "var",
           "delete_after": null,
           "print": ""
@@ -112,23 +99,42 @@
         "command": "OnCommandBlock",
         "id": "block_9",
         "position": [
-          0,
-          0
+          24,
+          4
         ],
         "variables": {
           "name": "role"
+        }
+      },
+      {
+        "command": "IfnDefBlock",
+        "id": "block_0",
+        "position": [
+          448,
+          32
+        ],
+        "variables": {
+          "key": "money"
+        }
+      },
+      {
+        "command": "AddMemberVarBlock",
+        "id": "block_10",
+        "position": [
+          318,
+          171
+        ],
+        "variables": {
+          "key": "money",
+          "value": "0",
+          "print": ""
         }
       }
     ],
     "connections": [
       {
-        "from": "block_2",
-        "to": "block_4",
-        "label": ""
-      },
-      {
         "from": "block_4",
-        "to": "block_1",
+        "to": "block_0",
         "label": ""
       },
       {
@@ -158,32 +164,29 @@
       },
       {
         "from": "block_9",
-        "to": "block_2",
+        "to": "block_4",
         "label": ""
+      },
+      {
+        "from": "block_0",
+        "to": "block_1",
+        "label": "end"
+      },
+      {
+        "from": "block_0",
+        "to": "block_10",
+        "label": "true"
       }
     ]
   },
   "if-command": {
     "commands": [
       {
-        "command": "AddMemberVarBlock",
-        "id": "block_7",
-        "position": [
-          648,
-          38
-        ],
-        "variables": {
-          "key": "money",
-          "value": "0",
-          "print": ""
-        }
-      },
-      {
         "command": "ReadMemberFileBlock",
         "id": "block_3",
         "position": [
-          875,
-          28
+          364,
+          41
         ],
         "variables": {
           "print": ""
@@ -193,13 +196,13 @@
         "command": "ChangeVariableValueBlock",
         "id": "block_5",
         "position": [
-          862,
-          158
+          898,
+          178
         ],
         "variables": {
           "target": "money",
           "operator": "add",
-          "value": "5",
+          "value": "{val}",
           "print": ""
         }
       },
@@ -218,8 +221,8 @@
         "command": "SendMessageBlock",
         "id": "block_6",
         "position": [
-          874,
-          447
+          769,
+          431
         ],
         "variables": {
           "message": "{author.mention}, You now have {money} monetos! :)",
@@ -256,8 +259,8 @@
         "command": "SendMessageBlock",
         "id": "block_9",
         "position": [
-          404,
-          227
+          35,
+          319
         ],
         "variables": {
           "message": "{author.mention}, Please wait {something} seconds before using this command",
@@ -271,8 +274,8 @@
         "command": "CooldownBlock",
         "id": "block_1",
         "position": [
-          388,
-          26
+          329,
+          233
         ],
         "variables": {
           "cooldown": "30",
@@ -280,17 +283,62 @@
           "error": "something",
           "print": ""
         }
+      },
+      {
+        "command": "IfnDefBlock",
+        "id": "block_2",
+        "position": [
+          527,
+          32
+        ],
+        "variables": {
+          "key": "money"
+        }
+      },
+      {
+        "command": "AddMemberVarBlock",
+        "id": "block_10",
+        "position": [
+          740,
+          14
+        ],
+        "variables": {
+          "key": "money",
+          "value": "0",
+          "print": ""
+        }
+      },
+      {
+        "command": "RandomNumberBlock",
+        "id": "block_7",
+        "position": [
+          654,
+          155
+        ],
+        "variables": {
+          "min": "1",
+          "max": "10",
+          "key": "val",
+          "type": "int",
+          "print": ""
+        }
+      },
+      {
+        "command": "ExitCommand",
+        "id": "block_11",
+        "position": [
+          204,
+          442
+        ],
+        "variables": {
+          "print": ""
+        }
       }
     ],
     "connections": [
       {
-        "from": "block_7",
-        "to": "block_3",
-        "label": ""
-      },
-      {
         "from": "block_3",
-        "to": "block_5",
+        "to": "block_2",
         "label": ""
       },
       {
@@ -319,8 +367,28 @@
         "label": "try"
       },
       {
-        "from": "block_1",
+        "from": "block_0",
+        "to": "block_3",
+        "label": "end"
+      },
+      {
+        "from": "block_9",
+        "to": "block_11",
+        "label": ""
+      },
+      {
+        "from": "block_2",
+        "to": "block_10",
+        "label": "true"
+      },
+      {
+        "from": "block_2",
         "to": "block_7",
+        "label": "end"
+      },
+      {
+        "from": "block_7",
+        "to": "block_5",
         "label": ""
       }
     ]

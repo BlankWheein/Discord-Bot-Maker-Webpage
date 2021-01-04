@@ -9,6 +9,7 @@ class RandomNumberBlock extends ActionBlock {
 
     this.add_field("MIN", "int", "min");
     this.add_field("MAX", "int", "max");
+    this.add_field("KEY", "int", "key");
     this.add_field("TYPE", ["int", "float"], "type");
 
     this.add_print();
